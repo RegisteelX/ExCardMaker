@@ -1,0 +1,105 @@
+.form-energy-type-container{
+  display: inline-grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 6px;
+
+  .form-energy-type-input{
+    display: inline-block;
+    position: relative;
+
+    &.hidden{
+      display: none;
+    }
+
+    input{
+      display: none;
+    }
+
+    img{
+      width: Calc(35px / 1.5);
+      height: Calc(35px / 1.5);
+      cursor: pointer;
+
+      &.selected{
+        -webkit-box-shadow:0px 0px 5px 2px rgba(192,85,119,0.9);
+        -moz-box-shadow: 0px 0px 5px 2px rgba(192,85,119,0.9);
+        box-shadow: 0px 0px 5px 2px rgba(192,85,119,0.9);
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.form-ability-input img{
+  width: Calc(165px / 2);
+  height: Calc(41px / 2);
+}
+
+.pure-form-stacked > .pure-g > div{
+  margin-right: 25px;
+}
+
+.form-attack{
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.3em;
+  margin-bottom: 0.3em;
+}
+
+.type-counter{
+  position: absolute;
+  top: -8px;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  color: white;
+  text-shadow:
+          1px 1px 0 #000,
+          -1px -1px 0 #000,
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+          1px 1px 0 #000;
+}
+
+select{
+  height: initial !important;
+}
+
+fieldset{
+  background-color: #FFF;
+  border-radius: 25px;
+  padding: 25px !important;
+  margin-bottom: 25px !important;
+}
+
+#card-fixer{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#card *{
+  pointer-events: none;
+}
+
+textarea,
+select,
+input[type='text']{
+  width: 100%;
+  margin-right: 0.3em;
+}
+
+textarea{
+  resize: none !important;
+  height: 150px;
+}
+
+#card-fixer.card-image-saving{
+  transform: scale(1.0) translateY(-50%) !important;
+}
+
+@media (max-device-width: 2559px) {
+  #card-fixer {
+    transform: scale(0.75) translateY(-65%);
+    right: 125px;
+  }
+}

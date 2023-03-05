@@ -1,0 +1,431 @@
+@font-face {
+  font-family: 'Gill Sans Condensed Bold';
+  src:  url('../assets/fonts/Gill Sans Condensed Bold.woff2') format('woff2'),
+  url('../assets/fonts/Gill Sans Condensed Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gill Sans Regular';
+  src:  url('../assets/fonts/Gill Sans Std.woff2') format('woff2'),
+  url('../assets/fonts/Gill Sans Std.woff') format('woff');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gill Sans Regular';
+  src: url('../assets/fonts/Gill Sans Std Italic.woff2') format('woff2'),
+  url('../assets/fonts/Gill Sans Std Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura Std Heavy';
+  src: url("../assets/fonts/FuturaStd-Heavy.woff2") format('woff2');
+}
+
+@font-face {
+  font-family: 'Futura Std Medium';
+  src: url('../assets/fonts/Futura Std Medium.woff2') format('woff2'),
+  url('../assets/fonts/Futura Std Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura Std Oblique';
+  src: url('../assets/fonts/Futura Std Bold Oblique.woff2') format('woff2'),
+  url('../assets/fonts/Futura Std Bold Oblique.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Futura Std Book Oblique';
+  src: url('../assets/fonts/Futura Std Book Oblique.woff2') format('woff2'),
+  url('../assets/fonts/Futura Std Book Oblique.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pokemon TCG Symbols';
+  src: url('../assets/fonts/PKMN_TCG_SYM18.woff2') format('woff2'),
+  url('../assets/fonts/PKMN_TCG_SYM18.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+$pokeBodyColor: #228c2f;
+$pokePowerColor: #ce2315;
+
+html{
+  background-color: black;
+}
+
+body{
+  background-color: initial !important;
+}
+
+p{
+  padding: 0;
+  margin: 0;
+}
+
+.special-icon{
+  font-family: "Pokemon TCG Symbols", serif;
+}
+
+.benched-weakness-resistance-text{
+  font-style: italic;
+}
+
+.settings-container{
+  width: 75%;
+}
+
+#imageCanvas{
+  position: absolute;
+  z-index: 0;
+}
+
+#card{
+  position: relative;
+  width: 747px;
+  height: 1038px;
+
+  .card-border{
+    position: absolute;
+    left: 0;
+    z-index: 1;
+  }
+
+  .poke-attack-wrapper{
+    display: grid !important;
+    grid-template-columns: 1fr;
+
+    .poke-attack{
+      height: 35px;
+      line-height: 35px;
+      min-width: 633px;
+      max-width: 633px;
+      display: flex;
+    }
+  }
+
+  .poke-copyright{
+    font-family: "Futura Std Medium", serif;
+    text-align: center;
+    font-size: 15px;
+    transform:translate(-50%);
+  }
+
+  .poke-set-detail{
+    font-family: "Futura Std Oblique", italic;
+    text-align: center;
+    font-size: 15px;
+    width: 70px;
+    font-style: italic;
+  }
+
+  .poke-illustrator{
+    font-family: "Futura Std Book Oblique", italic;
+    font-size: 16px;
+    text-align: right;
+    font-style: italic;
+  }
+
+  .poke-serial-number{
+    font-family: "Futura Std Medium", serif;
+    text-align: center;
+    width: 100px;
+    font-size: 15px;
+  }
+
+  .poke-rarity{
+    position: relative;
+
+    img{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
+.card-element {
+  position: absolute;
+  display: flex;
+
+  &.poke-delta-species-border{
+    z-index: 1;
+  }
+
+  &.poke-ex-border{
+    z-index: 2;
+  }
+
+  &.poke-evolution-circle{
+    z-index: 3;
+  }
+
+  &.poke-ability{
+    display: grid !important;
+    grid-template-columns: 1fr;
+
+    img{
+      display: inline;
+    }
+
+    .poke-ability-name{
+      display: flex;
+      line-height: 34px;
+      height: 38px;
+
+      img{
+        height: 41px;
+      }
+
+      p{
+        font-family: "Gill Sans Condensed Bold", serif;
+        font-size: 38px;
+        margin-left: 24px;
+
+        &.body{
+          color: $pokeBodyColor;
+        }
+
+        &.power{
+          color: $pokePowerColor;
+        }
+      }
+    }
+  }
+
+  .poke-name-prefix{
+    font-family: "Gill Sans Condensed Bold", serif;
+    font-size: 24px;
+    margin-right: 10px;
+    line-height: 50px;
+  }
+
+  &.poke-name-wrapper{
+    height: 42px;
+    z-index: 2;
+
+    .poke-name{
+      font-family: "Gill Sans Condensed Bold", serif;
+      font-size: 50px;
+      line-height: 50px;
+      margin-top: -8px; //UGH
+      margin-left: -3px; //DOUBLE UGH
+    }
+
+    .poke-name-variant-wrapper{
+      .poke-name-variant{
+        display: inline-block;
+        margin-left: 18px;
+        position: absolute;
+        bottom: 7px;
+      }
+    }
+  }
+
+  &.poke-hp{
+    font-family: "Futura Std Heavy", serif;
+    font-size: 37.5px;
+    margin-top: -9px;
+    z-index: 2;
+
+    .scaled-space{
+      width: 8px;
+    }
+  }
+
+  &.poke-evolution-text{
+    font-family: "Gill Sans Regular", serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    transform: scaleX(1.1);
+    transform-origin: left;
+  }
+
+  &.poke-evolution-image{
+    z-index: 4;
+  }
+
+  &.poke-weakness-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 35px;
+    gap: 4px;
+  }
+
+  &.poke-resistance-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    height: 35px;
+    gap: 4px;
+  }
+
+  &.poke-retreat-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 152px;
+    height: 35px;
+    gap: 4px;
+  }
+
+  .poke-attack-name{
+    font-family: "Gill Sans Condensed Bold", serif;
+    font-size: 45px;
+    margin-left: 23px;
+    transform: scaleX(0.89);
+    transform-origin: left;
+  }
+
+  .poke-attack-costs {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-0,
+    &-1{
+      width: 35px;
+    }
+
+    &-2{
+      width: 77px;
+      gap: 7px;
+    }
+
+    &-3{
+      width: 119px;
+      gap: 7px;
+    }
+
+    &-4{
+      width: 161px;
+      gap: 7px;
+    }
+
+    &-5{
+      width: 203px;
+      gap: 7px;
+    }
+  }
+
+  .poke-attack-damage-wrapper{
+    margin-left: auto;
+
+    .poke-attack-damage{
+      font-family: "Gill Sans Regular", serif;
+      font-size: 45px;
+      transform: scaleX(0.89);
+      transform-origin: right;
+      line-height: 37px;
+      display: inline-block;
+    }
+
+    .poke-attack-damage-postfix{
+      font-family: "Gill Sans Condensed Bold", serif;
+      font-size: 24px;
+      display: inline-block;
+      min-width: 14px;
+      max-width: 14px;
+    }
+
+    .poke-attack-damage-postfix-placeholder{
+      width: 14px;
+      display: inline-block;
+    }
+  }
+
+  .poke-ability-description,
+  .poke-attack-description{
+    font-family: "Gill Sans Regular", serif;
+    transform: scaleX(0.96);
+    transform-origin: left;
+    grid-row: 2;
+    margin-left: 82px;
+    margin-top: 6px;
+    max-width: 558px;
+    text-align: justify;
+
+    .poke-energy-symbol-span-wrapper {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      position: relative;
+      vertical-align: top;
+
+      .poke-energy-symbol-span {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        background-size: cover;
+
+        &-g {
+          background-image: url("../assets/ex/Energy/grass.png");
+        }
+
+        &-r {
+          background-image: url("../assets/ex/Energy/fire.png");
+        }
+
+        &-c {
+          background-image: url("../assets/ex/Energy/colorless.png");
+        }
+
+        &-l {
+          background-image: url("../assets/ex/Energy/lightning.png");
+        }
+
+        &-f {
+          background-image: url("../assets/ex/Energy/fighting.png");
+        }
+
+        &-d {
+          background-image: url("../assets/ex/Energy/dark.png");
+        }
+
+        &-p {
+          background-image: url("../assets/ex/Energy/psychic.png");
+        }
+
+        &-s {
+          background-image: url("../assets/ex/Energy/metal.png");
+        }
+
+        &-w {
+          background-image: url("../assets/ex/Energy/water.png");
+        }
+      }
+    }
+  }
+
+  &.poke-icon > img{
+    max-width: 32px;
+    max-height: 32px;
+  }
+
+  .poke-ability-description{
+    margin-left: 41px;
+  }
+}

@@ -1,0 +1,223 @@
+@font-face {
+  font-family: 'Gill Sans Condensed Bold';
+  src:  url('../assets/fonts/Gill Sans Condensed Bold.woff2') format('woff2'),
+        url('../assets/fonts/Gill Sans Condensed Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gill Sans Regular';
+  src:  url('../assets/fonts/Gill Sans Regular.woff2') format('woff2'),
+        url('../assets/fonts/Gill Sans Regular.woff') format('woff');
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Futura Std Heavy';
+  src: url("../assets/fonts/FuturaStd-Heavy.woff2") format('woff2');
+}
+
+p{
+  padding: 0;
+  margin: 0;
+}
+
+#card{
+  position: relative;
+  width: 471px;
+  height: 659px;
+}
+
+.card-element{
+  position: absolute;
+  display: flex;
+
+  &.poke-name{
+    font-family: "Gill Sans Condensed Bold", serif;
+    font-size: 32px;
+    transform: scaleX(0.99);
+  }
+
+  &.poke-hp{
+    font-family: "Futura Std Heavy", serif;
+    font-size: 22px;
+    transform: scaleX(0.98);
+  }
+
+  &.poke-weakness{
+    font-family: "Gill Sans Condensed Bold", serif;
+    font-size: 16px;
+    transform: scaleX(0.9);
+  }
+
+  &.poke-retreat{
+    .poke-energy-symbol{
+      position: relative;
+    }
+  }
+
+  &.poke-attacks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 412px;
+
+    .poke-attack{
+      position: relative;
+      flex: 0 0 auto;
+      border-bottom: 2px solid #000;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+
+      &:last-of-type{
+        border-bottom: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      .poke-attack-costs-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px;
+
+        .poke-attack-costs {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 4px;
+          justify-items: center;
+          align-items: center;
+          height: fit-content;
+
+          .poke-energy-symbol{
+            position: relative;
+          }
+
+          &-1{
+            grid-template-columns: repeat(1, 1fr);
+          }
+
+          &-3{
+            grid-template-rows: repeat(2, 1fr);
+          }
+
+          &-4{
+            row-gap: 4px;
+            grid-template-rows: repeat(2, 1fr);
+          }
+
+          &-5{
+            grid-template-rows: repeat(3, 1fr);
+          }
+
+          &-3,
+          &-5{
+            .poke-energy-symbol:nth-child(3){
+              grid-column: span 2;
+            }
+          }
+        }
+      }
+
+      .poke-attack-description{
+        width: 278px;
+        padding-left: 8px;
+        box-sizing: border-box;
+        letter-spacing: -0.4px;
+        display: flex;
+        align-items: center;
+
+        .poke-energy-symbol-span-wrapper{
+          display: inline-block;
+          width: 1em;
+          height: 1em;
+          position: relative;
+
+          .poke-energy-symbol-span{
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            background-size: cover;
+
+            &-g{
+              background-image: url("../assets/neo_energy/g.png");
+            }
+
+            &-d{
+              background-image: url("../assets/neo_energy/d.png");
+            }
+
+            &-f{
+              background-image: url("../assets/neo_energy/f.png");
+            }
+
+            &-c{
+              background-image: url("../assets/neo_energy/c.png");
+            }
+
+            &-l{
+              background-image: url("../assets/neo_energy/l.png");
+            }
+
+            &-n{
+              background-image: url("../assets/neo_energy/n.png");
+            }
+
+            &-o{
+              background-image: url("../assets/neo_energy/o.png");
+            }
+
+            &-p{
+              background-image: url("../assets/neo_energy/p.png");
+            }
+
+            &-s{
+              background-image: url("../assets/neo_energy/s.png");
+            }
+
+            &-w{
+              background-image: url("../assets/neo_energy/w.png");
+            }
+
+            &-z{
+              background-image: url("../assets/neo_energy/z.png");
+            }
+          }
+        }
+
+        &-no-text{
+          justify-content: center;
+        }
+
+        .poke-attack-title{
+          font-family: "Gill Sans Condensed Bold", serif;
+          font-size: 26px;
+          letter-spacing: initial;
+        }
+
+        .poke-attack-text{
+          font-family: "Gill Sans Regular", serif;
+          font-size: 22px;
+          line-height: 24px;
+        }
+      }
+
+      .poke-attack-damage{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 64px;
+
+        p{
+          font-family: "Gill Sans Regular", serif;
+          font-size: 36px;
+          display: block;
+        }
+      }
+    }
+  }
+}
