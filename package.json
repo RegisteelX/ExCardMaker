@@ -55,15 +55,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StynVanDeHaterd/NeoPokecardMaker.git"
+    "url": "git+https://github.com/RegisteelX/NeoPokecardMaker.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/StynVanDeHaterd/NeoPokecardMaker/issues"
+    "url": "https://github.com/RegisteelX/NeoPokecardMaker/issues"
   },
-  "homepage": "https://github.com/StynVanDeHaterd/NeoPokecardMaker#readme",
+  "homepage": "https://github.com/RegisteelX/NeoPokecardMaker#readme",
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
     "@types/html2canvas": "^1.0.0",
