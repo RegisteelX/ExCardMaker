@@ -69,7 +69,7 @@ module.exports = {
     },
     output: {
         filename: 'neopokecardmaker.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'impl'),
         libraryTarget: 'umd',
         umdNamedDefine: true
     },
