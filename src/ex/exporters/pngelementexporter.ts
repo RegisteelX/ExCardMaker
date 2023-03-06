@@ -1,4 +1,4 @@
-import html2canvas from "html2canvas";
+import * as htmlToImage from 'html-to-image';
 
 export class PNGElementExporter{
 
@@ -16,12 +16,14 @@ export class PNGElementExporter{
 
     public async export(): Promise<void>{
         try {
-            const canvas = await html2canvas(this.element[0], {
-                backgroundColor:null,
-                scale: 1
+            const canvas = await htmlToImage.toPng(this.element[0], {
+                backgroundColor: undefined,
+                skipAutoScale: true,
+                width: 747,
+                height: 1038
+            }).then((dataUrl) => {
+                this.downloadImage(dataUrl, this.name, this.prefix);
             });
-            const pngImage = canvas.toDataURL();
-            this.downloadImage(pngImage, this.name, this.prefix);
         } catch (error) {
             console.error("Exporting failure: " + error);
         }
