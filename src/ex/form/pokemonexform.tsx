@@ -330,12 +330,12 @@ export function PokemonExForm() {
                         <EvolutionStageSection onChange={handleEvolutionChange}/>
                     </fieldset>
                     <fieldset>
-                        <legend>Attacks</legend>
-                        <AttackInput name="attacks" label="Attacks" value={attacks} onChange={handleAttackChange} />
-                    </fieldset>
-                    <fieldset>
                         <legend>Ability</legend>
                         <AbilityInput onChangeAbility={onAbilityChange}/>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Attacks</legend>
+                        <AttackInput name="attacks" label="Attacks" value={attacks} onChange={handleAttackChange} />
                     </fieldset>
                     <fieldset>
                         <legend>Weakness, resistance and retreat.</legend>
