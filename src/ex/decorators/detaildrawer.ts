@@ -26,7 +26,7 @@ export class DetailDrawer extends AbstractElementDrawer{
             if(details.serialNumber != null){
                 const serialNumber = $(`<div class='poke-serial-number card-element'>${details.serialNumber}</div>`)
                 serialNumber
-                    .setElementPosition(null, 59, null, 38)
+                    .setElementPosition(null, 59, null, 37)
                     .applyStyleIf("color", "#FFF", (): boolean => {
                         return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
                     })
@@ -36,7 +36,7 @@ export class DetailDrawer extends AbstractElementDrawer{
             if(details.copyright != null){
                 const copyright = $(`<div class='poke-copyright card-element'>${details.copyright}</div>`);
                 copyright
-                    .setElementPosition(null, 373, null, 38)
+                    .setElementPosition(null, 373, null, 37)
                     .applyStyleIf("color", "#FFF", (): boolean => {
                         return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
                     })
@@ -49,7 +49,7 @@ export class DetailDrawer extends AbstractElementDrawer{
 
                 const numbering = $(`<div class='poke-set-detail card-element'>${cardNumber}/${setTotal}</div>`);
                 numbering
-                    .setElementPosition(null, null, 97, 35)
+                    .setElementPosition(null, null, 97, 34)
                     .applyStyleIf("color", "#FFF", (): boolean => {
                         return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
                     })

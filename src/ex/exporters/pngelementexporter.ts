@@ -1,7 +1,4 @@
-import {IPokemon} from "../../pokemon/pokemon";
-import {IPokemonEx} from "../pokemonex";
-import html2canvas from "html2canvas";
-import {ImageScanner} from "./imagescanner";
+import domtoimage from 'dom-to-image';
 
 export class PNGElementExporter{
 
@@ -19,9 +16,9 @@ export class PNGElementExporter{
 
     public async export(): Promise<void>{
         try {
-            const canvas = await html2canvas(this.element[0], { backgroundColor:null });
-            const pngImage = canvas.toDataURL();
-            this.downloadImage(pngImage, this.name, this.prefix);
+            await domtoimage.toPng(this.element[0], { bgcolor: undefined }).then((dataUrl) => {
+                this.downloadImage(dataUrl, this.name, this.prefix);
+            });
         } catch (error) {
             console.error("Exporting failure: " + error);
         }
