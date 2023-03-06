@@ -16,8 +16,10 @@ export class PNGElementExporter{
 
     public async export(): Promise<void>{
         try {
-            await domtoimage.toPng(this.element[0], { bgcolor: undefined }).then((dataUrl) => {
-                this.downloadImage(dataUrl, this.name, this.prefix);
+            await domtoimage
+                .toPng(this.element[0], { bgcolor: undefined, cacheBust: true })
+                .then((dataUrl) => {
+                    this.downloadImage(dataUrl, this.name, this.prefix);
             });
         } catch (error) {
             console.error("Exporting failure: " + error);
