@@ -241,6 +241,7 @@ export function PokemonExForm() {
         $("#card").empty();
 
 
+        //TODO: Rework spacing system and take screen resolutions into account.
         const fixer = $("#card-fixer").addClass("card-image-saving");
         const chain = new PredefinedElementDrawerChain(pokemon, "card");
         chain.draw().then(() => {
