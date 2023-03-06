@@ -331,19 +331,11 @@ export function PokemonExForm() {
                     </fieldset>
                     <fieldset>
                         <legend>Attacks</legend>
-                        <div>
-                            <AttackInput name="attacks" label="Attacks" value={attacks} onChange={handleAttackChange} />
-                        </div>
+                        <AttackInput name="attacks" label="Attacks" value={attacks} onChange={handleAttackChange} />
                     </fieldset>
                     <fieldset>
                         <legend>Ability</legend>
-                        <div className="pure-g">
-                            <div className="pure-u-md-1-3">
-                                <label className="pure-form-message">
-                                    <AbilityInput onChangeAbility={onAbilityChange}/>
-                                </label>
-                            </div>
-                        </div>
+                        <AbilityInput onChangeAbility={onAbilityChange}/>
                     </fieldset>
                     <fieldset>
                         <legend>Weakness, resistance and retreat.</legend>
