@@ -1,4 +1,4 @@
-import domtoimage from 'dom-to-image';
+import html2canvas from "html2canvas";
 
 export class PNGElementExporter{
 
@@ -16,11 +16,12 @@ export class PNGElementExporter{
 
     public async export(): Promise<void>{
         try {
-            await domtoimage
-                .toPng(this.element[0], { bgcolor: undefined, cacheBust: true })
-                .then((dataUrl) => {
-                    this.downloadImage(dataUrl, this.name, this.prefix);
+            const canvas = await html2canvas(this.element[0], {
+                backgroundColor:null,
+                scale: 1
             });
+            const pngImage = canvas.toDataURL();
+            this.downloadImage(pngImage, this.name, this.prefix);
         } catch (error) {
             console.error("Exporting failure: " + error);
         }
