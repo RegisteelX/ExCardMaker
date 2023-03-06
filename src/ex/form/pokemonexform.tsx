@@ -240,8 +240,12 @@ export function PokemonExForm() {
         const pokemon = pokemonBuilder.build();
         $("#card").empty();
 
+
+        const fixer = $("#card-fixer").addClass("card-image-saving");
         const chain = new PredefinedElementDrawerChain(pokemon, "card");
-        chain.draw();
+        chain.draw().then(() => {
+            fixer.removeClass("card-image-saving");
+        });
     }
 
     const onAbilityChange = (ability: IExAbility | undefined) => {
