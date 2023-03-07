@@ -1,10 +1,7 @@
 import {AbstractElementDrawer} from "./abstractelementdrawer";
 import {IPokemonEx} from "../pokemonex";
 import {Type} from "../../pokemon/type";
-import {SymbolSize} from "../../neo/neoenergysymbolloader";
 import {LegacyAbilityType} from "../../pokemon/ability";
-import PokePower from "../../assets/ex/Symbols/power.png";
-import PokeBody from "../../assets/ex/Symbols/body.png";
 import {Variant} from "../variant";
 import {IPokemon} from "../../pokemon/pokemon";
 import {IElementDrawer} from "./elementdrawer";
@@ -18,6 +15,11 @@ import {TextSymbolReplacer} from "../replacers/textsymbolreplacer";
 import {ItalicTextReplacer} from "../replacers/italictextreplacer";
 import {doDivsOverlap} from "../../helpers/elementhelper";
 import {IsEvolved} from "../../pokemon/evolution";
+
+// @ts-ignore
+import PokePower from "../../assets/ex/Symbols/power.png";
+// @ts-ignore
+import PokeBody from "../../assets/ex/Symbols/body.png";
 
 export class AttackDrawer extends AbstractElementDrawer{
 
@@ -86,7 +88,7 @@ export class AttackDrawer extends AbstractElementDrawer{
             const costs: Type[] = attack.energyCost.sortEnumValuesByFrequencyWithExclusion(Type.Colorless);
             for(let cost of costs){
                 if(cost != null){
-                    const symbol = $(this.energySymbolLoader.getSymbolImage(cost, SymbolSize.LARGE)).clone();
+                    const symbol = $(this.energySymbolLoader.getSymbolImage(cost)).clone();
                     $(symbol).appendTo(costRoot);
                 }
             }

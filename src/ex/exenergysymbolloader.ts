@@ -1,6 +1,5 @@
 import {IEnergySymbolLoader} from "../helpers/energysymbolloader";
 import {Type} from "../pokemon/type";
-import {NeoEnergySymbolLoader, SymbolSize} from "../neo/neoenergysymbolloader";
 import {AbstractSingleton} from "../helpers/singleton";
 
 import ColorlessEnergySymbol from "../assets/ex/Energy/colorless.png";
@@ -20,7 +19,7 @@ export class ExEnergySymbolLoader implements IEnergySymbolLoader{
         return AbstractSingleton.getInstance(ExEnergySymbolLoader) as ExEnergySymbolLoader;
     }
 
-    public getSymbolImage(type: Type, size: SymbolSize): HTMLElement {
+    public getSymbolImage(type: Type): HTMLElement {
         const key = `${type}`;
         let image = ExEnergySymbolLoader.cache.get(key);
         if (image) {
