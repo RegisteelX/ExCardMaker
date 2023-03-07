@@ -1,3 +1,5 @@
+@import "pure-min.css";
+
 .form-energy-type-container{
   display: inline-grid;
   grid-template-columns: repeat(9, 1fr);
@@ -62,6 +64,7 @@
 
 select{
   height: initial !important;
+  width: 100%;
 }
 
 fieldset{

@@ -1,22 +1,23 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
-import {PokemonExBuilder} from "../pokemonexbuilder";
-import {PredefinedElementDrawerChain} from "../decorators/elementdrawerchainbuilder";
-import TypeInput from "./typeinput";
-import {Type} from "../../pokemon/type";
-import {ICardDetails, Rarity} from "../../pokemon/carddetails";
-import {CardDetailsSection} from "./carddetailssection";
-import {Variant} from "../variant";
-import CardVariant from "./cardvariantcomponent";
-import {IAttack} from "../../pokemon/attack";
-import AttackInput from "./attacksection";
-import ImageUpload from "./imageupload";
-import AbilityInput, {IExAbility} from "./abilityinput";
-import {PNGElementExporter} from "../exporters/pngelementexporter";
-import Icon from "../../assets/ex/Symbols/promo.png";
-import WeaknessesResistancesSection from "./wrrsection";
-import EvolutionStageSection from "./evolutionsection";
-import {IEvolutionStage} from "../../pokemon/evolution";
-import {StageType} from "../../pokemon/stage";
+import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { Type } from '../../pokemon/type';
+import { ICardDetails, Rarity } from '../../pokemon/carddetails';
+import { IAttack } from '../../pokemon/attack';
+import { IEvolutionStage } from '../../pokemon/evolution';
+import { StageType } from '../../pokemon/stage';
+import { PokemonExBuilder } from '../pokemonexbuilder';
+import { PredefinedElementDrawerChain } from '../decorators/elementdrawerchainbuilder';
+import TypeInput from './typeinput';
+import { CardDetailsSection } from './carddetailssection';
+import { Variant } from '../variant';
+import CardVariant from './cardvariantcomponent';
+import AttackInput from './attacksection';
+import ImageUpload from './imageupload';
+import AbilityInput, { IExAbility } from './abilityinput';
+import { PNGElementExporter } from '../exporters/pngelementexporter';
+import WeaknessesResistancesSection from './wrrsection';
+import EvolutionStageSection from './evolutionsection';
+
+import Icon from '../../assets/ex/Symbols/promo.png';
 
 import "../../style/form.scss"
 

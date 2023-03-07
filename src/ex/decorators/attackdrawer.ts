@@ -16,9 +16,7 @@ import {ItalicTextReplacer} from "../replacers/italictextreplacer";
 import {doDivsOverlap} from "../../helpers/elementhelper";
 import {IsEvolved} from "../../pokemon/evolution";
 
-// @ts-ignore
 import PokePower from "../../assets/ex/Symbols/power.png";
-// @ts-ignore
 import PokeBody from "../../assets/ex/Symbols/body.png";
 
 export class AttackDrawer extends AbstractElementDrawer{
