@@ -42,3 +42,21 @@ footer{
   display: grid;
   grid-template-columns: 65% 35%;
 }
+
+@media only screen and (max-width: 1700px) {
+  .main-container{
+    display: block;
+  }
+
+  .settings-container{
+    width: 100%;
+  }
+
+  #card-fixer{
+    display: block;
+    margin-top: 64px;
+    position: relative;
+    transform: none;
+    right: initial;
+  }
+}
