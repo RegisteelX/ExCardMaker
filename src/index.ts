@@ -14,11 +14,20 @@ import "./style/ex_style.scss"
 
 import {PokemonExBuilder} from "./ex/pokemonexbuilder";
 import {PredefinedElementDrawerChain} from "./ex/decorators/elementdrawerchainbuilder";
-import {StageType} from "./pokemon/stage";
 
 const pokemon = new PokemonExBuilder("Custom")
     .setType(Type.Colorless)
     .setHp(0)
+    .isGoldStar()
+    .setPokeBody({
+        name: "Frost Aura",
+        description: "Once during your turn, if Articuno [*] is your Active Pokémon, you may choose one of your opponent's Pokémon and put 1 damage counter on it."
+    })
+    .addAttack({
+        name: "Relentless Blizzard",
+        text: "Flip a coin. If heads, this attack does 30 damage to each of your opponent's Pokémon. If tails, this attack does 30 damage to each of your Pokémon, except Articuno [*]. (Don't apply Weakness and Resistance for Benched Pokémon.)",
+        energyCost: [Type.Colorless]
+    })
     .setRetreat(0)
     .setDetails({
         illustrator: "Ken Sugimori",

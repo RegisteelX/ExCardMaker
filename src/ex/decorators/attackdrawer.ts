@@ -25,6 +25,7 @@ export class AttackDrawer extends AbstractElementDrawer{
     private readonly SLOT_GAP_INITIAL: number = 24;
     private readonly SLAT_GAP_REDUCED: number = 6;
     private readonly SLOT_GAP_NONE: number = 0;
+    private readonly MAX_INNER_HEIGHT = 920;
 
     private descriptionFontSize: number;
 
@@ -220,16 +221,16 @@ export class AttackDrawer extends AbstractElementDrawer{
     private checkIfTextFits(){
         let height = this.getHighestAttackHeight();
         let noOverlap = this.noAttacksOverlap();
-        this.rescaling = (height > 910) || !noOverlap;
+        this.rescaling = (height > this.MAX_INNER_HEIGHT) || !noOverlap;
 
-        while(height > 910 || !noOverlap){
+        while(height > this.MAX_INNER_HEIGHT || !noOverlap){
             height = this.getHighestAttackHeight();
 
             this.clearElements();
             this.redrawElements();
 
             noOverlap = this.noAttacksOverlap();
-            if(!noOverlap && this.reduceGapSize() || height > 910 && this.reduceGapSize()){
+            if(!noOverlap && this.reduceGapSize() || height > this.MAX_INNER_HEIGHT && this.reduceGapSize()){
                 continue;
             }
 
