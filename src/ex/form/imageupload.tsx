@@ -5,7 +5,7 @@ interface ImageUploadProps {
     previewHeight?: number;
     previewMaxWidth?: number;
     previewMaxHeight?: number;
-    onImageSelect: (imageUrl: string) => void;
+    onImageSelect: (imageUrl: string | null) => void;
 }
 
 const ImageUpload = ({ previewWidth, previewHeight, previewMaxWidth, previewMaxHeight, onImageSelect }: ImageUploadProps) => {
@@ -13,6 +13,8 @@ const ImageUpload = ({ previewWidth, previewHeight, previewMaxWidth, previewMaxH
     const [file, setFile] = useState<File | null>(null);
     const [imageWidth, setImageWidth] = useState<number | null>(null);
     const [imageHeight, setImageHeight] = useState<number | null>(null);
+
+    const inputRef = React.createRef<HTMLInputElement>();
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();
@@ -64,16 +66,34 @@ const ImageUpload = ({ previewWidth, previewHeight, previewMaxWidth, previewMaxH
         }
     }
 
+    const handleRemoveImage = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setImagePreviewUrl("");
+        setFile(null);
+        setImageWidth(null);
+        setImageHeight(null);
+
+        inputRef.current!.value = "";
+        onImageSelect(null);
+    };
+
     return (
         <div>
-            <input type="file" onChange={handleImageChange} />
+            <input ref={inputRef} type="file" onChange={handleImageChange} />
             {imagePreviewUrl && (
-                <img
-                    src={imagePreviewUrl}
-                    alt="Image Preview"
-                    onLoad={handleImageLoad}
-                    style={{ width: actualPreviewWidth, height: actualPreviewHeight, objectFit: "cover" }}
-                />
+                <div>
+                    <div>
+                        <img
+                            src={imagePreviewUrl}
+                            alt="Image Preview"
+                            onLoad={handleImageLoad}
+                            style={{ width: actualPreviewWidth, height: actualPreviewHeight, objectFit: "cover" }}
+                        />
+                    </div>
+                    <div>
+                        <button type="button" className="pure-button pure-button-secondary" onClick={handleRemoveImage}>X</button>
+                    </div>
+                </div>
             )}
         </div>
     );

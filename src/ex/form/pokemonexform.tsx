@@ -125,8 +125,8 @@ export function PokemonExForm() {
         setRetreat(value);
     }
 
-    const handleImageChange = (imageUrl: string) => {
-        setImage(imageUrl);
+    const handleImageChange = (imageUrl: string | null) => {
+        setImage(imageUrl != null ? imageUrl : '');
     }
 
     const handleEvolutionChange = (evolution: IEvolutionStage) => {

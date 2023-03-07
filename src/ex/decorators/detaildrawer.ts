@@ -47,13 +47,28 @@ export class DetailDrawer extends AbstractElementDrawer{
                 const cardNumber = details.cardNumber || "000";
                 const setTotal = details.setTotal || "000";
 
-                const numbering = $(`<div class='poke-set-detail card-element'>${cardNumber}/${setTotal}</div>`);
-                numbering
-                    .setElementPosition(null, null, 97, 35)
-                    .applyStyleIf("color", "#FFF", (): boolean => {
-                        return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
-                    })
-                    .appendTo(this.root);
+                if( details.cardNumber != null
+                    && details.cardNumber !== ""
+                    && details.setTotal != null
+                    && details.setTotal !== ""){
+                    const numbering = $(`<div class='poke-set-detail card-element'>${cardNumber}/${setTotal}</div>`);
+                    numbering
+                        .setElementPosition(null, null, 97, 35)
+                        .applyStyleIf("color", "#FFF", (): boolean => {
+                            return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
+                        })
+                        .appendTo(this.root);
+                }
+                else if(details.cardNumber != null && details.cardNumber != ""){
+                    const numbering = $(`<div class='poke-set-detail card-element'>${cardNumber}</div>`);
+                    numbering
+                        .setElementPosition(null, null, 97, 35)
+                        .css("width", "initial")
+                        .applyStyleIf("color", "#FFF", (): boolean => {
+                            return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
+                        })
+                        .appendTo(this.root);
+                }
             }
 
             if(details.rarity != null){

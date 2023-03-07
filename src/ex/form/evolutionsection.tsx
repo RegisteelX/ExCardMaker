@@ -9,8 +9,8 @@ interface EvolutionStageProps {
 
 const EvolutionStageSection = ({ onChange }: EvolutionStageProps) => {
     const [stage, setStage] = useState<StageType>(StageType.BASIC);
-    const [evolvesFrom, setEvolvesFrom] = useState<string>("");
-    const [image, setImage] = useState<string>("");
+    const [evolvesFrom, setEvolvesFrom] = useState<string>('');
+    const [image, setImage] = useState<string>('');
 
     useEffect(() => {
         changeEvolutionStage();
@@ -24,8 +24,8 @@ const EvolutionStageSection = ({ onChange }: EvolutionStageProps) => {
         setEvolvesFrom(e.target.value);
     }
 
-    const handleImageChange = (value: string) => {
-        setImage(value);
+    const handleImageChange = (value: string | null) => {
+        setImage(value != null ? value : '');
     }
 
     const changeEvolutionStage = () => {
