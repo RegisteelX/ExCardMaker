@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "babel --watch src --out-dir dist --extensions .ts,.tsx",
-    "build": "webpack --mode production",
+    "produce": "webpack --mode production",
+    "build": "webpack --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
