@@ -139,7 +139,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                     text = replacer.replace(text);
                 }
 
-                const attackDescription = $(`<div class='poke-attack-description'>${text}</div>`);
+                const attackDescription = $(`<div class='poke-attack-description poke-description'>${text}</div>`);
                 attackDescription
                     .css("font-size", `${this.descriptionFontSize}px`)
                     .css("line-height", `${this.descriptionFontSize + 1}px`)
@@ -187,7 +187,7 @@ export class AttackDrawer extends AbstractElementDrawer{
             text = replacer.replace(text);
         }
 
-        const abilityDescription = $(`<div class="poke-ability-description">${text}</div>`);
+        const abilityDescription = $(`<div class="poke-ability-description poke-description">${text}</div>`);
         abilityDescription
             .css("font-size", `${this.descriptionFontSize}px`)
             .css("line-height", `${this.descriptionFontSize + 1}px`)
@@ -245,19 +245,26 @@ export class AttackDrawer extends AbstractElementDrawer{
             this.descriptionFontSize += 1;
             if(this.descriptionFontSize >= this.INITIAL_DESCRIPTION_FONT_SIZE) break;
 
-            this.clearElements();
-            this.redrawElements();
+            this.changeDescriptionFontSize(this.descriptionFontSize);
 
             height = this.getHighestAttackHeight();
             noOverlap = this.noAttacksOverlap();
 
             if(height > this.MAX_INNER_HEIGHT || !noOverlap){
                 this.descriptionFontSize -= 1;
-                this.clearElements();
-                this.redrawElements();
+                this.changeDescriptionFontSize(this.descriptionFontSize);
                 tryIncreaseFontSize = false;
             }
         }
+    }
+
+    private changeDescriptionFontSize(amount: number): void{
+        const descriptions = $("#card").find("poke-description");
+        descriptions.each((index, element) => {
+            $(element)
+                .css("font-size", `${amount}px`)
+                .css("line-height", `${amount + 1}px`)
+        })
     }
 
     private getHighestAttackHeight(): number{
