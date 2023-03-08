@@ -26,6 +26,8 @@ export class AttackDrawer extends AbstractElementDrawer{
     private readonly SLAT_GAP_REDUCED: number = 6;
     private readonly SLOT_GAP_NONE: number = 0;
     private readonly MAX_INNER_HEIGHT = 910;
+    private readonly INITIAL_DESCRIPTION_FONT_SIZE = 32;
+    private readonly MIN_FONT_SIZE = 20;
 
     private descriptionFontSize: number;
 
@@ -47,7 +49,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         this.symbolLoader = new ExSymbolLoader();
 
         this.slotGapPixels = this.SLOT_GAP_INITIAL;
-        this.descriptionFontSize = 32;
+        this.descriptionFontSize = this.INITIAL_DESCRIPTION_FONT_SIZE;
         this.rescaling = false;
 
         this.stringReplacers = [
@@ -235,12 +237,13 @@ export class AttackDrawer extends AbstractElementDrawer{
             }
 
             this.descriptionFontSize -= 1;
-            if(this.descriptionFontSize <= 20) break;
+            if(this.descriptionFontSize <= this.MIN_FONT_SIZE) break;
         }
 
         let tryIncreaseFontSize = true;
         while(tryIncreaseFontSize){
             this.descriptionFontSize += 1;
+            if(this.descriptionFontSize >= this.INITIAL_DESCRIPTION_FONT_SIZE) break;
 
             this.clearElements();
             this.redrawElements();
