@@ -238,9 +238,22 @@ export class AttackDrawer extends AbstractElementDrawer{
             if(this.descriptionFontSize <= 20) break;
         }
 
-        if(this.rescaling){
+        let tryIncreaseFontSize = true;
+        while(tryIncreaseFontSize){
+            this.descriptionFontSize += 1;
+
             this.clearElements();
             this.redrawElements();
+
+            height = this.getHighestAttackHeight();
+            noOverlap = this.noAttacksOverlap();
+
+            if(height > this.MAX_INNER_HEIGHT || !noOverlap){
+                this.descriptionFontSize -= 1;
+                this.clearElements();
+                this.redrawElements();
+                tryIncreaseFontSize = false;
+            }
         }
     }
 
