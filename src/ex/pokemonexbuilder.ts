@@ -74,6 +74,11 @@ export class PokemonExBuilder implements IPokemonBuilder{
         return this;
     }
 
+    public isPrism(): PokemonExBuilder{
+        this.pokemon.variant = Variant.PRISM;
+        return this;
+    }
+
     public isDark(): PokemonExBuilder{
         this.pokemon.isDark = true;
         return this;

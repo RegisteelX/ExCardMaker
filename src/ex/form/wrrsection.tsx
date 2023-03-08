@@ -1,6 +1,5 @@
 import { Type } from "../../pokemon/type";
 import React, { useState } from "react";
-import TypeInput from "./TypeInput";
 import MultiTypeInput from "./multitypeinput";
 
 interface WeaknessesResistancesFormProps {

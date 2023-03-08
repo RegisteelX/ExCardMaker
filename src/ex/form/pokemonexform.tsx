@@ -1,19 +1,19 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
-import { Type } from '../../pokemon/type';
-import { ICardDetails, Rarity } from '../../pokemon/carddetails';
-import { IAttack } from '../../pokemon/attack';
-import { IEvolutionStage } from '../../pokemon/evolution';
-import { StageType } from '../../pokemon/stage';
-import { PokemonExBuilder } from '../pokemonexbuilder';
-import { PredefinedElementDrawerChain } from '../decorators/elementdrawerchainbuilder';
+import React, {ChangeEvent, FormEvent, useState} from 'react';
+import {Type} from '../../pokemon/type';
+import {ICardDetails, Rarity} from '../../pokemon/carddetails';
+import {IAttack} from '../../pokemon/attack';
+import {IEvolutionStage} from '../../pokemon/evolution';
+import {StageType} from '../../pokemon/stage';
+import {PokemonExBuilder} from '../pokemonexbuilder';
+import {PredefinedElementDrawerChain} from '../decorators/elementdrawerchainbuilder';
 import TypeInput from './typeinput';
-import { CardDetailsSection } from './carddetailssection';
-import { Variant } from '../variant';
+import {CardDetailsSection} from './carddetailssection';
+import {Variant} from '../variant';
 import CardVariant from './cardvariantcomponent';
 import AttackInput from './attacksection';
 import ImageUpload from './imageupload';
-import AbilityInput, { IExAbility } from './abilityinput';
-import { PNGElementExporter } from '../exporters/pngelementexporter';
+import AbilityInput, {IExAbility} from './abilityinput';
+import {PNGElementExporter} from '../exporters/pngelementexporter';
 import WeaknessesResistancesSection from './wrrsection';
 import EvolutionStageSection from './evolutionsection';
 
@@ -81,6 +81,9 @@ export function PokemonExForm() {
 
     const handleVariantChange = (variant: Variant) => {
         if(variant === Variant.GOLDSTAR && (specialType != SpecialType.DELTASPECIES && specialType != SpecialType.NONE)){
+            setSpecialType(SpecialType.NONE);
+        }
+        else if(variant === Variant.PRISM){
             setSpecialType(SpecialType.NONE);
         }
 
@@ -220,6 +223,9 @@ export function PokemonExForm() {
         switch (variant){
             case Variant.EX:
                 pokemonBuilder.isEx(false);
+                break;
+            case Variant.PRISM:
+                pokemonBuilder.isPrism();
                 break;
             case Variant.GOLDSTAR:
                 pokemonBuilder.isGoldStar();

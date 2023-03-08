@@ -142,6 +142,16 @@ import EReaderExLightningTemplate from "../assets/ex/E-Reader/ex/lightning.png";
 import EReaderExSteelTemplate from "../assets/ex/E-Reader/ex/metal.png";
 import EReaderExPsychicTemplate from "../assets/ex/E-Reader/ex/psychic.png";
 
+import PrismColorlessTemplate from "../assets/ex/Prism/colorless.png";
+import PrismDarkTemplate from "../assets/ex/Prism/darkness.png";
+import PrismFightingTemplate from "../assets/ex/Prism/fighting.png";
+import PrismFireTemplate from "../assets/ex/Prism/fire.png";
+import PrismWaterTemplate from "../assets/ex/Prism/water.png";
+import PrismGrassTemplate from "../assets/ex/Prism/grass.png";
+import PrismLightningTemplate from "../assets/ex/Prism/lightning.png";
+import PrismSteelTemplate from "../assets/ex/Prism/metal.png";
+import PrismPsychicTemplate from "../assets/ex/Prism/psychic.png";
+
 import {IImageloader} from "../helpers/imageloader";
 
 type DualTypeDictionary = Record<string, string>;
@@ -396,6 +406,31 @@ export class ExCardImageLoader implements IImageloader{
                 return EReaderPsychicTemplate;
             case Type.Dark:
                 return EReaderDarkTemplate;
+            default:
+                return "";
+        }
+    }
+
+    public getPrismImageSrc(type: Type): string {
+        switch (type) {
+            case Type.Colorless:
+                return PrismColorlessTemplate;
+            case Type.Fighting:
+                return PrismFightingTemplate;
+            case Type.Steel:
+                return PrismSteelTemplate;
+            case Type.Fire:
+                return PrismFireTemplate;
+            case Type.Water:
+                return PrismWaterTemplate;
+            case Type.Grass:
+                return PrismGrassTemplate;
+            case Type.Electric:
+                return PrismLightningTemplate;
+            case Type.Psychic:
+                return PrismPsychicTemplate;
+            case Type.Dark:
+                return PrismDarkTemplate;
             default:
                 return "";
         }

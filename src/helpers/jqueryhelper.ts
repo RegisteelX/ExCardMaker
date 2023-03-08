@@ -1,5 +1,3 @@
-import {toInteger} from "lodash";
-
 export type Coordinate = { x: number, y: number }
 
 declare global{
