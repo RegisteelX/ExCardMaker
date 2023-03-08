@@ -25,7 +25,7 @@ export class AttackDrawer extends AbstractElementDrawer{
     private readonly SLOT_GAP_INITIAL: number = 24;
     private readonly SLAT_GAP_REDUCED: number = 6;
     private readonly SLOT_GAP_NONE: number = 0;
-    private readonly MAX_INNER_HEIGHT = 920;
+    private readonly MAX_INNER_HEIGHT = 910;
 
     private descriptionFontSize: number;
 
@@ -272,11 +272,6 @@ export class AttackDrawer extends AbstractElementDrawer{
     private reduceGapSize(): boolean{
         if(this.slotGapPixels === this.SLOT_GAP_INITIAL){
             this.slotGapPixels = this.SLAT_GAP_REDUCED;
-            return true;
-        }
-
-        if(this.slotGapPixels === this.SLAT_GAP_REDUCED){
-            this.slotGapPixels = this.SLOT_GAP_NONE;
             return true;
         }
 
