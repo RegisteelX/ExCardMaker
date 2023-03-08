@@ -22,7 +22,7 @@ import PokeBody from "../../assets/ex/Symbols/body.png";
 export class AttackDrawer extends AbstractElementDrawer{
 
     private readonly AMOUNT_OF_SLOTS: number = 9;
-    private readonly SLOT_GAP_INITIAL: number = 24;
+    private readonly SLOT_GAP_INITIAL: number = 12;
     private readonly SLAT_GAP_REDUCED: number = 6;
     private readonly SLOT_GAP_NONE: number = 0;
     private readonly MAX_INNER_HEIGHT = 910;
@@ -258,8 +258,8 @@ export class AttackDrawer extends AbstractElementDrawer{
         const attacks = card.find(".poke-attack-wrapper");
         for(let i = 0; i < attacks.length; ++i){
             const attack = $(attacks[i]);
-            const relativePosition = this.getRelativePosition(attack, card);
-            let height = relativePosition.y + attack.height()!;
+            const topPosition = parseInt(attack.css("top"), 10);
+            let height = topPosition + attack.height()!;
 
             if(height > highest){
                 highest = height;
@@ -272,6 +272,11 @@ export class AttackDrawer extends AbstractElementDrawer{
     private reduceGapSize(): boolean{
         if(this.slotGapPixels === this.SLOT_GAP_INITIAL){
             this.slotGapPixels = this.SLAT_GAP_REDUCED;
+            return true;
+        }
+
+        if(this.slotGapPixels === this.SLAT_GAP_REDUCED){
+            this.slotGapPixels = this.SLOT_GAP_NONE;
             return true;
         }
 
