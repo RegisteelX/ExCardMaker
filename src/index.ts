@@ -14,6 +14,7 @@ import "./style/ex_style.scss"
 
 import {PokemonExBuilder} from "./ex/pokemonexbuilder";
 import {PredefinedElementDrawerChain} from "./ex/decorators/elementdrawerchainbuilder";
+import {VersionControl} from "./helpers/versioncontrol";
 
 const pokemon = new PokemonExBuilder("Custom Card")
     .setType(Type.Colorless)
@@ -35,3 +36,7 @@ chain.draw();
 
 const root = createRoot(document.getElementById('settings-form') as Element);
 root.render(React.createElement(PokemonExForm));
+
+const versionControl = new VersionControl(1, 4, 3);
+versionControl.createFooter();
+versionControl.replaceScriptVersion();
