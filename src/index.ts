@@ -15,7 +15,7 @@ import "./style/ex_style.scss"
 import {PokemonExBuilder} from "./ex/pokemonexbuilder";
 import {PredefinedElementDrawerChain} from "./ex/decorators/elementdrawerchainbuilder";
 
-const pokemon = new PokemonExBuilder("Custom")
+const pokemon = new PokemonExBuilder("Custom Card")
     .setType(Type.Colorless)
     .setHp(0)
     .setRetreat(0)

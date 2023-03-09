@@ -13,7 +13,7 @@ import {ExPokemonReplacer} from "../replacers/expokemonreplacer";
 import {ExEnergySymbolReplacer} from "../replacers/exenergysymbolreplacer";
 import {TextSymbolReplacer} from "../replacers/textsymbolreplacer";
 import {ItalicTextReplacer} from "../replacers/italictextreplacer";
-import {doDivsOverlap} from "../../helpers/elementhelper";
+import {doDivsOverlap, doDivsOverlapWithOffset} from "../../helpers/elementhelper";
 import {IsEvolved} from "../../pokemon/evolution";
 
 import PokePower from "../../assets/ex/Symbols/power.png";
@@ -22,12 +22,12 @@ import PokeBody from "../../assets/ex/Symbols/body.png";
 export class AttackDrawer extends AbstractElementDrawer{
 
     private readonly AMOUNT_OF_SLOTS: number = 9;
-    private readonly SLOT_GAP_INITIAL: number = 12;
+    private readonly SLOT_GAP_INITIAL: number = 10;
     private readonly SLAT_GAP_REDUCED: number = 6;
     private readonly SLOT_GAP_NONE: number = 0;
     private readonly MAX_INNER_HEIGHT = 910;
     private readonly INITIAL_DESCRIPTION_FONT_SIZE = 32;
-    private readonly MIN_FONT_SIZE = 20;
+    private readonly MIN_FONT_SIZE = 19;
 
     private descriptionFontSize: number;
 
@@ -221,10 +221,12 @@ export class AttackDrawer extends AbstractElementDrawer{
     }
 
     private checkIfTextFits(){
+        const pokemonEx = this.pokemon as IPokemonEx;
         let height = this.getHighestAttackHeight();
         let noOverlap = this.noAttacksOverlap();
         this.rescaling = (height > this.MAX_INNER_HEIGHT) || !noOverlap;
 
+        let failed = false;
         while(height > this.MAX_INNER_HEIGHT || !noOverlap){
             height = this.getHighestAttackHeight();
 
@@ -237,11 +239,14 @@ export class AttackDrawer extends AbstractElementDrawer{
             }
 
             this.descriptionFontSize -= 1;
-            if(this.descriptionFontSize <= this.MIN_FONT_SIZE) break;
+            if(this.descriptionFontSize <= this.MIN_FONT_SIZE){
+                failed = true;
+                break;
+            }
         }
 
         let tryIncreaseFontSize = true;
-        while(tryIncreaseFontSize){
+        while(tryIncreaseFontSize && !failed){
             this.descriptionFontSize += 1;
             if(this.descriptionFontSize >= this.INITIAL_DESCRIPTION_FONT_SIZE) break;
 
@@ -256,6 +261,36 @@ export class AttackDrawer extends AbstractElementDrawer{
                 tryIncreaseFontSize = false;
             }
         }
+
+        if(!failed){
+            return;
+        }
+
+        let spatialReductionAttempt = true;
+        const attackList = $("#card").find(".poke-attack-wrapper");
+        let index = this.hasAbility() ? 0 : 1;
+        while (spatialReductionAttempt && !this.singleAttack()){
+            while(true){
+                this.changeAttackTopPosition($(attackList[index]), -1);
+                noOverlap = this.noAttacksOverlap();
+
+                if(!noOverlap){
+                    this.changeAttackTopPosition($(attackList[index]), this.SLOT_GAP_INITIAL);
+                    index += 1;
+                }
+
+                if(index >= attackList.length){
+                    break;
+                }
+            }
+
+            spatialReductionAttempt = false;
+        }
+    }
+
+    private changeAttackTopPosition(element: JQuery<HTMLElement>, amount: number): void{
+        const top = parseInt(element.css("top"), 10);
+        element.css("top", `${top + amount}px`);
     }
 
     private changeDescriptionFontSize(amount: number): void{
@@ -272,7 +307,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         const pokemonEx = this.pokemon as IPokemonEx;
         let highest = 0;
 
-        if(pokemonEx.ability != null){
+        if(this.hasAbility()){
             const ability = $(".poke-ability");
             const relativePosition = this.getRelativePosition(ability, card);
             highest = relativePosition.y + ability.height()!;
@@ -306,14 +341,15 @@ export class AttackDrawer extends AbstractElementDrawer{
         return false;
     }
 
-    private noAttacksOverlap(): boolean{
+    private noAttacksOverlap(keepGapInMind: boolean = false): boolean{
         const pokemonEx = this.pokemon as IPokemonEx;
-        if(this.SingleAttack() && pokemonEx.ability == null) return true;
+        if(this.singleAttack() && pokemonEx.ability == null) return true;
 
         const ability = $(".poke-ability");
         const attacks = $("#card").find(".poke-attack-wrapper");
 
-        if(ability.length > 0 && attacks.length > 0 && doDivsOverlap(ability, $(attacks[0]))){
+        const abilityOverlap = keepGapInMind ? doDivsOverlapWithOffset(ability, $(attacks[0]), { bottom: this.SLOT_GAP_INITIAL }) : doDivsOverlap(ability, $(attacks[0]));
+        if(ability.length > 0 && attacks.length > 0 && abilityOverlap){
             return false;
         }
 
@@ -323,7 +359,10 @@ export class AttackDrawer extends AbstractElementDrawer{
             const attackOne = $(attacks[0]);
             const attackTwo = $(attacks[1]);
 
-            if(doDivsOverlap(attackOne, attackTwo)){
+            if(keepGapInMind && doDivsOverlapWithOffset(attackOne, attackTwo, { bottom: this.SLOT_GAP_INITIAL })){
+                return false;
+            }
+            else if(!keepGapInMind && doDivsOverlap(attackOne, attackTwo)){
                 return false;
             }
         }
@@ -378,7 +417,7 @@ export class AttackDrawer extends AbstractElementDrawer{
             const slot = variant !== Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.isDeltaSpecies || pokemonEx.isDark ? 1 : 0;
             let height = $(".poke-ability").height()!;
 
-            /*if(!this.rescaling && this.SingleAttackWithoutDescription() || !this.rescaling && this.SingleAttack() && height <= 143){
+            /*if(!this.rescaling && this.singleAttackWithoutDescription() || !this.rescaling && this.singleAttack() && height <= 143){
                 return this.findNextFittingSlot(slot, height);
             }*/
 
@@ -386,7 +425,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         }
 
         if (this.pokemon.attacks.length <= 1) {
-            if(this.SingleAttackWithoutDescription()){
+            if(this.singleAttackWithoutDescription()){
                 return 4;
             }
             return 3;
@@ -395,11 +434,15 @@ export class AttackDrawer extends AbstractElementDrawer{
         return !this.rescaling ? 2 : 1;
     }
 
-    private SingleAttack(): boolean{
+    private singleAttack(): boolean{
         return this.pokemon.attacks.length === 1;
     }
 
-    private SingleAttackWithoutDescription(): boolean{
-        return this.SingleAttack() && this.pokemon.attacks[0].text == null || this.pokemon.attacks.length === 0;
+    private singleAttackWithoutDescription(): boolean{
+        return this.singleAttack() && this.pokemon.attacks[0].text == null || this.pokemon.attacks.length === 0;
+    }
+
+    private hasAbility(): boolean{
+        return (this.pokemon as IPokemonEx).ability != null;
     }
 }
