@@ -1,6 +1,6 @@
 import {AbstractElementDrawer} from "./abstractelementdrawer";
 import {IPokemonEx} from "../pokemonex";
-import {Type} from "../../pokemon/type";
+import {Type, TypeOrder} from "../../pokemon/type";
 import {LegacyAbilityType} from "../../pokemon/ability";
 import {Variant} from "../variant";
 import {IPokemon} from "../../pokemon/pokemon";
@@ -70,6 +70,30 @@ export class AttackDrawer extends AbstractElementDrawer{
         this.drawAttacks();
     }
 
+    private sortTypesByFrequencyAndOrder(types: Type[], excludedType: Type): Type[] {
+        const sortedTypes = types.sortEnumValuesByFrequencyWithExclusion(excludedType);
+
+        return sortedTypes.sort((a, b) => {
+            const aIndex = TypeOrder.indexOf(a);
+            const bIndex = TypeOrder.indexOf(b);
+
+            // If both types are in the order array, sort by their position in the array.
+            if (aIndex !== -1 && bIndex !== -1) {
+                return aIndex - bIndex;
+            }
+
+            // If only one type is in the order array, it should come first.
+            if (aIndex !== -1) {
+                return -1;
+            } else if (bIndex !== -1) {
+                return 1;
+            }
+
+            // If neither type is in the order array, use the previous sort order.
+            return sortedTypes.indexOf(b) - sortedTypes.indexOf(a);
+        });
+    }
+
     private drawAttacks(): void{
         if(this.pokemon.attacks.length === 0){
             return;
@@ -86,7 +110,7 @@ export class AttackDrawer extends AbstractElementDrawer{
             const costRoot = $(`<div class='poke-attack-costs poke-attack-costs-${attack.energyCost.length}'></div>`);
             const costWrapper = $("<div class='poke-attack-costs-wrapper'></div>");
 
-            const costs: Type[] = attack.energyCost.sortEnumValuesByFrequencyWithExclusion(Type.Colorless);
+            const costs: Type[] = this.sortTypesByFrequencyAndOrder(attack.energyCost, Type.Colorless);
             for(let cost of costs){
                 if(cost != null){
                     const symbol = $(this.energySymbolLoader.getSymbolImage(cost)).clone();

@@ -14,10 +14,10 @@ export const TypeOrder = [
     Type.Grass,
     Type.Fire,
     Type.Water,
-    Type.Colorless,
     Type.Electric,
     Type.Fighting,
     Type.Psychic,
+    Type.Dark,
     Type.Steel,
-    Type.Dark
+    Type.Colorless
 ];
