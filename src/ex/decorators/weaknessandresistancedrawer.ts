@@ -24,6 +24,7 @@ export class WeaknessAndResistanceDrawer extends AbstractElementDrawer{
         if(pokemonEx.weaknesses.length > 0){
             const weaknessWrapper = $("<div class='card-element poke-weakness-wrapper'></div>")
             for (let weakness of pokemonEx.weaknesses){
+                if(weakness == null) continue;
                 const symbol = $(this.energySymbolLoader.getSymbolImage(weakness!)).clone();
                 symbol.appendTo(weaknessWrapper);
             }
@@ -33,6 +34,7 @@ export class WeaknessAndResistanceDrawer extends AbstractElementDrawer{
         if(pokemonEx.resistances.length > 0){
             const resistanceWrapper = $("<div class='card-element poke-resistance-wrapper'></div>")
             for (let resistance of pokemonEx.resistances){
+                if(resistance == null) continue;
                 const symbol = $(this.energySymbolLoader.getSymbolImage(resistance!)).clone();
                 symbol.appendTo(resistanceWrapper);
             }
