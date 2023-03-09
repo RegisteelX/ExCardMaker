@@ -30,12 +30,4 @@ export class VersionControl {
 
         footer.append(footerText, trademarkText);
     };
-
-    public replaceScriptVersion(): void{
-        const script = $("#main-script");
-        script.attr("src", script.attr("src")!
-            .replace("{{MAJOR}}", this.majorVersion.toString())
-            .replace("{{MINOR}}", this.minorVersion.toString())
-            .replace("{{PATCH}}", this.patchVersion.toString()))
-    }
 }

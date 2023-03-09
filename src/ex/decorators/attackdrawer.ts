@@ -372,9 +372,11 @@ export class AttackDrawer extends AbstractElementDrawer{
         const ability = $(".poke-ability");
         const attacks = $("#card").find(".poke-attack-wrapper");
 
-        const abilityOverlap = keepGapInMind ? doDivsOverlapWithOffset(ability, $(attacks[0]), { bottom: this.SLOT_GAP_INITIAL }) : doDivsOverlap(ability, $(attacks[0]));
-        if(ability.length > 0 && attacks.length > 0 && abilityOverlap){
-            return false;
+        if(this.hasAbility()){
+            const abilityOverlap = keepGapInMind ? doDivsOverlapWithOffset(ability, $(attacks[0]), { bottom: this.SLOT_GAP_INITIAL }) : doDivsOverlap(ability, $(attacks[0]));
+            if(ability.length > 0 && attacks.length > 0 && abilityOverlap){
+                return false;
+            }
         }
 
         for(let i = 0; i < attacks.length; ++i){
