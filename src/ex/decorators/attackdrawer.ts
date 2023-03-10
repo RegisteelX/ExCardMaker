@@ -291,11 +291,11 @@ export class AttackDrawer extends AbstractElementDrawer{
         }
 
         if(!failed){
-            //Spacing rule for 2 attacks having an extra separating them.
-            if(pokemonEx.attacks.length == 2 && hasResized){
+            //Spacing rule for 2 attacks or 1 attack + ability having an extra slot separating them.
+            if((pokemonEx.attacks.length == 2 || pokemonEx.attacks.length == 1 && this.hasAbility()) && hasResized){
                 const card = $("#card");
                 const attackList = card.find(".poke-attack-wrapper");
-                const attack = $(attackList[1]);
+                const attack = this.hasAbility() ? $(attackList[0]): $(attackList[1]);
                 const slotIndex = this.getCurrentSlot(this.getRelativePosition(attack, card).y);
                 const slot = this.slots[slotIndex];
 
