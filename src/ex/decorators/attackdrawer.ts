@@ -18,7 +18,6 @@ import {IsEvolved} from "../../pokemon/evolution";
 
 import PokePower from "../../assets/ex/Symbols/power.png";
 import PokeBody from "../../assets/ex/Symbols/body.png";
-import {at} from "lodash";
 
 export class AttackDrawer extends AbstractElementDrawer{
 
