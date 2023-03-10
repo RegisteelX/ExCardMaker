@@ -216,7 +216,7 @@ export function PokemonExForm() {
             pokemonBuilder.setAbility(ability!);
         }
 
-        for(let attack of attacks){
+        for(const attack of attacks){
             pokemonBuilder.addAttack(attack);
         }
 

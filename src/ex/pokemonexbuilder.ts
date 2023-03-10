@@ -64,7 +64,7 @@ export class PokemonExBuilder implements IPokemonBuilder{
         return this;
     }
 
-    public isEx(shatter: boolean = false): PokemonExBuilder{
+    public isEx(shatter = false): PokemonExBuilder{
         this.pokemon.variant = shatter ? Variant.EX_SHATTERED : Variant.EX;
         return this;
     }
@@ -127,7 +127,7 @@ export class PokemonExBuilder implements IPokemonBuilder{
         return this;
     }
 
-    public isHolon(specialType: boolean = false): PokemonExBuilder{
+    public isHolon(specialType = false): PokemonExBuilder{
         this.pokemon.holon = {
             specialType: specialType,
             type: Type.Colorless,

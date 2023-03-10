@@ -16,7 +16,7 @@ const CostInput = ({ name, onChange }: CostInputProps) => {
             selectedTypes.push(type);
         }
         else if(decrease){
-            let index = selectedTypes.findIndex(t => t === type);
+            const index = selectedTypes.findIndex(t => t === type);
             if (index > -1) {
                 selectedTypes.splice(index, 1);
             }

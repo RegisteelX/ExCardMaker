@@ -104,14 +104,14 @@ export class AttackDrawer extends AbstractElementDrawer{
         const pokemonEx = this.pokemon as IPokemonEx;
 
         let startSlot = this.getStartingSlot();
-        for (let attack of attacks){
+        for (const attack of attacks){
             const attackWrapper = $("<div class='poke-attack-wrapper card-element'></div>")
             const attackRoot = $("<div class='poke-attack'></div>");
             const costRoot = $(`<div class='poke-attack-costs poke-attack-costs-${attack.energyCost.length}'></div>`);
             const costWrapper = $("<div class='poke-attack-costs-wrapper'></div>");
 
             const costs: Type[] = this.sortTypesByFrequencyAndOrder(attack.energyCost, Type.Colorless);
-            for(let cost of costs){
+            for(const cost of costs){
                 if(cost != null){
                     const symbol = $(this.energySymbolLoader.getSymbolImage(cost)).clone();
                     $(symbol).appendTo(costRoot);
@@ -159,7 +159,7 @@ export class AttackDrawer extends AbstractElementDrawer{
 
             if(attack.text != null){
                 let text = attack.text;
-                for(let replacer of this.stringReplacers){
+                for(const replacer of this.stringReplacers){
                     text = replacer.replace(text);
                 }
 
@@ -207,7 +207,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         ability.setElementPosition(position.y - 3, 91, null, null);
 
         let text = abilityInner.description;
-        for(let replacer of this.stringReplacers){
+        for(const replacer of this.stringReplacers){
             text = replacer.replace(text);
         }
 
@@ -294,7 +294,8 @@ export class AttackDrawer extends AbstractElementDrawer{
         const attackList = $("#card").find(".poke-attack-wrapper");
         let index = this.hasAbility() ? 0 : 1;
         while (spatialReductionAttempt && !this.singleAttack()){
-            while(true){
+            let innerLoop = true;
+            while(innerLoop){
                 this.changeAttackTopPosition($(attackList[index]), -1);
                 noOverlap = this.noAttacksOverlap();
 
@@ -304,7 +305,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                 }
 
                 if(index >= attackList.length){
-                    break;
+                    innerLoop = false;
                 }
             }
 
@@ -341,7 +342,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         for(let i = 0; i < attacks.length; ++i){
             const attack = $(attacks[i]);
             const topPosition = parseInt(attack.css("top"), 10);
-            let height = topPosition + attack.height()!;
+            const height = topPosition + attack.height()!;
 
             if(height > highest){
                 highest = height;
@@ -351,7 +352,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         return highest;
     }
 
-    private reduceGapSize(): boolean{
+    private reduceGapSize(){
         if(this.slotGapPixels === this.SLOT_GAP_INITIAL){
             this.slotGapPixels = this.SLAT_GAP_REDUCED;
             return true;
@@ -365,7 +366,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         return false;
     }
 
-    private noAttacksOverlap(keepGapInMind: boolean = false): boolean{
+    private noAttacksOverlap(keepGapInMind = false): boolean{
         const pokemonEx = this.pokemon as IPokemonEx;
         if(this.singleAttack() && pokemonEx.ability == null) return true;
 
@@ -441,7 +442,7 @@ export class AttackDrawer extends AbstractElementDrawer{
 
         if (ability != null) {
             const slot = variant !== Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.isDeltaSpecies || pokemonEx.isDark ? 1 : 0;
-            let height = $(".poke-ability").height()!;
+            const height = $(".poke-ability").height()!;
 
             /*if(!this.rescaling && this.singleAttackWithoutDescription() || !this.rescaling && this.singleAttack() && height <= 143){
                 return this.findNextFittingSlot(slot, height);

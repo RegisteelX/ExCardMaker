@@ -14,7 +14,7 @@ export class VersionControl {
 
     private getVersionString = (): string => {
         return `v${this.majorVersion}.${this.minorVersion}.${this.patchVersion}`;
-    };
+    }
 
     public createFooter(): void {
         const versionString = this.getVersionString();
@@ -29,5 +29,5 @@ export class VersionControl {
         const trademarkText = $("<p>").css("font-size", 12).text(this.TRADEMARK_TEXT);
 
         footer.append(footerText, trademarkText);
-    };
+    }
 }

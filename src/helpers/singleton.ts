@@ -1,7 +1,5 @@
 export abstract class AbstractSingleton {
-    private static instanceMap = new Map<Function, any>();
-
-    protected constructor() {}
+    private static instanceMap = new Map<new () => any, any>();
 
     public static getInstance(ctor: new () => any): any {
         let instance = this.instanceMap.get(ctor);

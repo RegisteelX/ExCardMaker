@@ -1,6 +1,7 @@
 const path = require('path');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     watch: true,
@@ -74,6 +75,6 @@ module.exports = {
         umdNamedDefine: true
     },
     plugins: [
-        new LodashModuleReplacementPlugin(),
+        new ESLintPlugin({ extensions: ['.ts', '.tsx']})
     ]
 };

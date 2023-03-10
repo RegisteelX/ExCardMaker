@@ -9,7 +9,7 @@ declare global{
 }
 
 $.fn.setElementPosition = function (top: number | null, left: number | null, right: number | null, bottom: number | null) {
-    let cssProperties: any = {};
+    const cssProperties: any = {};
 
     if (top !== null && top !== undefined) {
         cssProperties["top"] = top;
