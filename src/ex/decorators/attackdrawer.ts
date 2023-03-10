@@ -18,6 +18,7 @@ import {IsEvolved} from "../../pokemon/evolution";
 
 import PokePower from "../../assets/ex/Symbols/power.png";
 import PokeBody from "../../assets/ex/Symbols/body.png";
+import {at} from "lodash";
 
 export class AttackDrawer extends AbstractElementDrawer{
 
@@ -251,7 +252,10 @@ export class AttackDrawer extends AbstractElementDrawer{
         this.rescaling = (height > this.MAX_INNER_HEIGHT) || !noOverlap;
 
         let failed = false;
+        let hasResized = false;
+        //Reposition attacks in case they overlap or exceed the inner card.
         while(height > this.MAX_INNER_HEIGHT || !noOverlap){
+            hasResized = true;
             height = this.getHighestAttackHeight();
 
             this.clearElements();
@@ -270,6 +274,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         }
 
         let tryIncreaseFontSize = true;
+        //Try increasing font size again after repositioning.
         while(tryIncreaseFontSize && !failed){
             this.descriptionFontSize += 1;
             if(this.descriptionFontSize >= this.INITIAL_DESCRIPTION_FONT_SIZE) break;
@@ -287,9 +292,29 @@ export class AttackDrawer extends AbstractElementDrawer{
         }
 
         if(!failed){
+            //Spacing rule for 2 attacks having an extra separating them.
+            if(pokemonEx.attacks.length == 2 && hasResized){
+                const card = $("#card");
+                const attackList = card.find(".poke-attack-wrapper");
+                const attack = $(attackList[1]);
+                const slotIndex = this.getCurrentSlot(this.getRelativePosition(attack, card).y);
+                const slot = this.slots[slotIndex];
+
+                if(slotIndex <= this.slots.length - 2){
+                    const nextSlot = this.slots[slotIndex + 1];
+                    attack.css("top", nextSlot.y);
+                    height = this.getHighestAttackHeight();
+
+                    if(height > this.MAX_INNER_HEIGHT){
+                        attack.css("top", slot.y);
+                    }
+                }
+            }
             return;
         }
 
+        //Positioning rules for when pretty much all space is taken by text.
+        //This is the only rule to break the slot based positioning.
         let spatialReductionAttempt = true;
         const attackList = $("#card").find(".poke-attack-wrapper");
         let index = this.hasAbility() ? 0 : 1;
@@ -423,6 +448,16 @@ export class AttackDrawer extends AbstractElementDrawer{
 
         for (let i = startSlot + 1; i < this.slots.length - 1; i++) {
             if (this.slots[startSlot].y + height < this.slots[i].y) {
+                return i;
+            }
+        }
+
+        return this.slots.length - 1;
+    }
+
+    private getCurrentSlot(height: number): number {
+        for (let i = 0; i < this.slots.length - 1; i++) {
+            if (height <= this.slots[i].y) {
                 return i;
             }
         }
