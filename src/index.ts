@@ -37,5 +37,5 @@ chain.draw();
 const root = createRoot(document.getElementById('settings-form') as Element);
 root.render(React.createElement(PokemonExForm));
 
-const versionControl = new VersionControl(1, 4, 8);
+const versionControl = new VersionControl(1, 4, 9);
 versionControl.createFooter();
