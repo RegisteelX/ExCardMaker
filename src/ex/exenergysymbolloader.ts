@@ -11,6 +11,7 @@ import LightningEnergySymbol from "../assets/ex/Energy/lightning.png";
 import MetalEnergySymbol from "../assets/ex/Energy/metal.png";
 import PsychicEnergySymbol from "../assets/ex/Energy/psychic.png";
 import WaterEnergySymbol from "../assets/ex/Energy/water.png";
+import DragonEnergySymbol from "../assets/ex/Energy/dragon.png";
 
 export class ExEnergySymbolLoader implements IEnergySymbolLoader{
     private static cache: Map<string, HTMLImageElement> = new Map();
@@ -46,7 +47,7 @@ export class ExEnergySymbolLoader implements IEnergySymbolLoader{
                 return FireEnergySymbol;
             case Type.Grass:
                 return GrassEnergySymbol;
-            case Type.Electric:
+            case Type.Lightning:
                 return LightningEnergySymbol;
             case Type.Steel:
                 return MetalEnergySymbol;
@@ -54,12 +55,14 @@ export class ExEnergySymbolLoader implements IEnergySymbolLoader{
                 return PsychicEnergySymbol;
             case Type.Water:
                 return WaterEnergySymbol;
+            case Type.Dragon:
+                return DragonEnergySymbol;
             default:
                 return "";
         }
     }
 
-    public getSymbolSpan(type: Type): HTMLElement {
+    public getSymbolSpan(): HTMLElement {
         const span = $("<span class='poke-energy-symbol-span'></span>");
         return span[0];
     }

@@ -16,18 +16,19 @@ export class ExEnergySymbolReplacer implements IStringReplacer {
         "F": Type.Fighting,
         "R": Type.Fire,
         "G": Type.Grass,
-        "L": Type.Electric,
+        "L": Type.Lightning,
         "D": Type.Dark,
         "P": Type.Psychic,
         "S": Type.Steel,
-        "W": Type.Water
+        "W": Type.Water,
+        "N": Type.Dragon
     }
 
     public replace(str: string): string {
         return str.replace(this.pattern, (match: string, p1: string) => {
             const symbol: Type | undefined = this.table[p1] as Type;
             if (symbol) {
-                const elem = this.symbolLoader.getSymbolSpan(symbol);
+                const elem = this.symbolLoader.getSymbolSpan();
                 elem.classList.add(`poke-energy-symbol-span-${p1.toLowerCase()}`);
 
                 const wrapper = $("<span class='poke-energy-symbol-span-wrapper'></span>");

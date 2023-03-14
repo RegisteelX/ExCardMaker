@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, SetStateAction, useState} from 'react';
 import {Type} from '../../pokemon/type';
 import {ICardDetails, Rarity} from '../../pokemon/carddetails';
 import {IAttack} from '../../pokemon/attack';
@@ -72,7 +72,7 @@ export function PokemonExForm() {
             return;
         }
 
-        setDualType(value as any);
+        setDualType(value as SetStateAction<undefined>);
     };
 
     const handleDetailsChange = (details: ICardDetails) => {
@@ -257,7 +257,7 @@ export function PokemonExForm() {
     }
 
     const onAbilityChange = (ability: IExAbility | undefined) => {
-        setAbility(ability as any);
+        setAbility(ability as SetStateAction<undefined>);
     }
 
     const downloadImage = () => {

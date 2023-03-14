@@ -8,9 +8,13 @@ export class HPDrawer extends AbstractElementDrawer{
         $(`<p class='poke-hp card-element'>${this.pokemon.hp}<span class="scaled-space"></span>HP</p>`)
             .setElementPosition(52, null, 112, null)
             .applyStyleIf("color", "#FFF", (): boolean => {
-                return this.PokemonIsOfType(Type.Dark) || (this.pokemon as IPokemonEx).isDark;
+                return this.mustInvert();
             })
             .appendTo(this.root);
     }
 
+    private mustInvert(): boolean{
+        const pokemonEx = this.pokemon as IPokemonEx;
+        return this.PokemonIsOfType(Type.Dark) || this.PokemonIsOfType(Type.Dragon) || pokemonEx.isDark;
+    }
 }

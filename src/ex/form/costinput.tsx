@@ -9,6 +9,7 @@ interface CostInputProps {
 }
 
 const CostInput = ({ name, onChange }: CostInputProps) => {
+    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
     const [selectedTypes, setSelectedTypes] = useState<Type[]>([]);
 
     const handleTypeChange = (type: Type, decrease: boolean) => {

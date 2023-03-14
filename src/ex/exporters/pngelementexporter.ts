@@ -16,7 +16,7 @@ export class PNGElementExporter{
 
     public async export(): Promise<void>{
         try {
-            const canvas = await htmlToImage.toPng(this.element[0], {
+            await htmlToImage.toPng(this.element[0], {
                 backgroundColor: undefined,
                 skipAutoScale: true,
                 width: 747,

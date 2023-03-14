@@ -13,7 +13,6 @@ import {IPokemonEx} from "../pokemonex";
 export class DetailDrawer extends AbstractElementDrawer{
 
     public async drawElement(): Promise<void> {
-        const pokemonEx = this.pokemon as IPokemonEx;
         if(this.pokemon.details != null){
             const details = this.pokemon.details;
 
@@ -28,7 +27,7 @@ export class DetailDrawer extends AbstractElementDrawer{
                 serialNumber
                     .setElementPosition(null, 59, null, 35)
                     .applyStyleIf("color", "#FFF", (): boolean => {
-                        return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
+                        return this.mustInvert();
                     })
                     .appendTo(this.root);
             }
@@ -38,7 +37,7 @@ export class DetailDrawer extends AbstractElementDrawer{
                 copyright
                     .setElementPosition(null, 373, null, 35)
                     .applyStyleIf("color", "#FFF", (): boolean => {
-                        return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
+                        return this.mustInvert();
                     })
                     .appendTo(this.root);
             }
@@ -55,7 +54,7 @@ export class DetailDrawer extends AbstractElementDrawer{
                     numbering
                         .setElementPosition(null, null, 97, 35)
                         .applyStyleIf("color", "#FFF", (): boolean => {
-                            return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
+                            return this.mustInvert();
                         })
                         .appendTo(this.root);
                 }
@@ -65,7 +64,7 @@ export class DetailDrawer extends AbstractElementDrawer{
                         .setElementPosition(null, null, 97, 35)
                         .css("width", "initial")
                         .applyStyleIf("color", "#FFF", (): boolean => {
-                            return this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
+                            return this.mustInvert();
                         })
                         .appendTo(this.root);
                 }
@@ -75,16 +74,15 @@ export class DetailDrawer extends AbstractElementDrawer{
                 const rarity = $(`<div class='poke-rarity-wrapper card-element'></div>`);
 
                 let image: string;
-                const mustInvert = this.PokemonIsOfType(Type.Dark) || pokemonEx.isDark;
                 switch (details.rarity){
                     case Rarity.COMMON:
-                        image = mustInvert ? CommonAlt : Common;
+                        image = this.mustInvert() ? CommonAlt : Common;
                         break;
                     case Rarity.UNCOMMON:
-                        image = mustInvert ? UncommonAlt : Uncommon;
+                        image = this.mustInvert() ? UncommonAlt : Uncommon;
                         break;
                     case Rarity.RARE:
-                        image = mustInvert ? RareAlt : Rare;
+                        image = this.mustInvert() ? RareAlt : Rare;
                         break;
                     case Rarity.ULTRA:
                         image = Ultra;
@@ -104,4 +102,8 @@ export class DetailDrawer extends AbstractElementDrawer{
         }
     }
 
+    private mustInvert(): boolean{
+        const pokemonEx = this.pokemon as IPokemonEx;
+        return this.PokemonIsOfType(Type.Dark) || this.PokemonIsOfType(Type.Dragon) || pokemonEx.isDark;
+    }
 }

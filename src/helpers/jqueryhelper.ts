@@ -9,6 +9,7 @@ declare global{
 }
 
 $.fn.setElementPosition = function (top: number | null, left: number | null, right: number | null, bottom: number | null) {
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     const cssProperties: any = {};
 
     if (top !== null && top !== undefined) {

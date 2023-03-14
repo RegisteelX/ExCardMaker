@@ -10,6 +10,7 @@ interface ImageUploadProps {
 
 const ImageUpload = ({ previewWidth, previewHeight, previewMaxWidth, previewMaxHeight, onImageSelect }: ImageUploadProps) => {
     const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
     const [file, setFile] = useState<File | null>(null);
     const [imageWidth, setImageWidth] = useState<number | null>(null);
     const [imageHeight, setImageHeight] = useState<number | null>(null);

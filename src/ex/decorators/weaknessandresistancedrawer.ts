@@ -40,13 +40,17 @@ export class WeaknessAndResistanceDrawer extends AbstractElementDrawer{
             }
             resistanceWrapper.setElementPosition(940, 320, null, null).appendTo(this.root);
 
-            const weaknessText = $(`<img class="card-element poke-resistance" src='${!this.PokemonIsOfType(Type.Dark) && !pokemonEx.isDark ? ResistanceText : ResistanceTextAlt}'/>`);
+            const weaknessText = $(`<img class="card-element poke-resistance" src='${!this.mustInvert() ? ResistanceText : ResistanceTextAlt}'/>`);
             weaknessText.setElementPosition(921, 306, null, null).appendTo(this.root);
         }
         else{
-            const weaknessText = $(`<img class="card-element poke-resistance" src='${!this.PokemonIsOfType(Type.Dark) && !pokemonEx.isDark ? NoResistanceText : NoResistanceTextAlt}'/>`);
+            const weaknessText = $(`<img class="card-element poke-resistance" src='${!this.mustInvert() ? NoResistanceText : NoResistanceTextAlt}'/>`);
             weaknessText.setElementPosition(921, 319, null, null).appendTo(this.root);
         }
     }
 
+    private mustInvert(): boolean{
+        const pokemonEx = this.pokemon as IPokemonEx;
+        return this.PokemonIsOfType(Type.Dark) || this.PokemonIsOfType(Type.Dragon) || pokemonEx.isDark;
+    }
 }

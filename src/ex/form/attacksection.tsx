@@ -3,15 +3,13 @@ import {IAttack} from "../../pokemon/attack";
 import CostInput from "./costinput";
 
 interface AttackInputProps {
-    name: string;
     label: string;
     value?: IAttack[];
     onChange: (value: IAttack[]) => void;
 }
 
-const AttackInput = ({ name, label, value = [], onChange }: AttackInputProps) => {
+const AttackInput = ({label, value = [], onChange }: AttackInputProps) => {
     const [attacks, setAttacks] = useState<IAttack[]>(value);
-
     const handleAddAttack = () => {
         setAttacks([...attacks, { name: "", text: "", damage: "", energyCost: []}]);
     };

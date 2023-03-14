@@ -5,6 +5,7 @@ import {IPokemonEx} from "../pokemonex";
 
 import "../../helpers/jqueryhelper"
 import "../../helpers/arrayhelper"
+import {Variant} from "../variant";
 
 export abstract class AbstractElementDrawer implements IElementDrawer{
 
@@ -32,6 +33,10 @@ export abstract class AbstractElementDrawer implements IElementDrawer{
     }
 
     public abstract async drawElement(): Promise<void>;
+
+    protected PokemonIsDualType(): boolean{
+        return (this.pokemon as IPokemonEx).variant == Variant.DUAL;
+    }
 
     protected PokemonIsOfType(type: Type): boolean{
         return this.pokemon.type === type || (this.pokemon as IPokemonEx).dualType === type;

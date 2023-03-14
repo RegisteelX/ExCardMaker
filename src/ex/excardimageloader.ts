@@ -6,7 +6,7 @@ import SteelTypeBasicTemplate from "../assets/ex/Basic/Metal.png"
 import FireTypeBasicTemplate from "../assets/ex/Basic/Fire.png"
 import WaterTypeBasicTemplate from "../assets/ex/Basic/Water.png"
 import GrassTypeBasicTemplate from "../assets/ex/Basic/Grass.png"
-import ElectricTypeBasicTemplate from "../assets/ex/Basic/Lightning.png"
+import LightningTypeBasicTemplate from "../assets/ex/Basic/Lightning.png"
 import PsychTypeBasicTemplate from "../assets/ex/Basic/Psychic.png"
 import DarkTypeBasicTemplate from "../assets/ex/Basic/Darkness.png"
 
@@ -16,7 +16,7 @@ import SteelTypeShiningTemplate from "../assets/ex/Shining/Metal.png"
 import FireTypeShiningTemplate from "../assets/ex/Shining/Fire.png"
 import WaterTypeShiningTemplate from "../assets/ex/Shining/Water.png"
 import GrassTypeShiningTemplate from "../assets/ex/Shining/Grass.png"
-import ElectricTypeShiningTemplate from "../assets/ex/Shining/Lightning.png"
+import LightningTypeShiningTemplate from "../assets/ex/Shining/Lightning.png"
 import PsychTypeShiningTemplate from "../assets/ex/Shining/Psychic.png"
 import DarkTypeShiningTemplate from "../assets/ex/Shining/Darkness.png"
 
@@ -26,19 +26,9 @@ import SteelTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Metal.png"
 import FireTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Fire.png"
 import WaterTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Water.png"
 import GrassTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Grass.png"
-import ElectricTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Lightning.png"
+import LightningTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Lightning.png"
 import PsychTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Psychic.png"
 import DarkTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Darkness.png"
-
-import ColorlessTypeExTemplate from "../assets/ex/ex Basic/Colorless.png";
-import FightingTypeExTemplate from "../assets/ex/ex Basic/Fighting.png";
-import SteelTypeExTemplate from "../assets/ex/ex Basic/Metal.png";
-import FireTypeExTemplate from "../assets/ex/ex Basic/Fire.png";
-import WaterTypeExTemplate from "../assets/ex/ex Basic/Water.png";
-import GrassTypeExTemplate from "../assets/ex/ex Basic/Grass.png";
-import ElectricTypeExTemplate from "../assets/ex/ex Basic/Lightning.png";
-import PsychTypeExTemplate from "../assets/ex/ex Basic/Psychic.png";
-import DarkTypeExTemplate from "../assets/ex/ex Basic/Darkness.png";
 
 import ColorlessFightingDualBaseTemplate from "../assets/ex/Dual/Colorless-Fighting.png"
 import ColorlessSteelDualBaseTemplate from "../assets/ex/Dual/Colorless-Steel.png"
@@ -152,6 +142,33 @@ import PrismLightningTemplate from "../assets/ex/Prism/lightning.png";
 import PrismSteelTemplate from "../assets/ex/Prism/metal.png";
 import PrismPsychicTemplate from "../assets/ex/Prism/psychic.png";
 
+//Dragon expansion
+import DragonTypeBasicTemplate from "../assets/ex/Basic/Dragon.png"
+import DragonTypeShiningTemplate from "../assets/ex/Shining/Dragon.png"
+import DragonTypeShiningDeltaTemplate from "../assets/ex/Shining/delta/Dragon.png"
+import DarkDragonTemplate from "../assets/ex/Dark/dragon.png";
+import EReaderDragonTemplate from "../assets/ex/e-Reader/Dragon.png";
+import EReadExDragonTemplate from "../assets/ex/e-Reader/ex/Dragon.png";
+import PrismDragonTemplate from "../assets/ex/Prism/Dragon.png";
+import ColorlessDragonDualBaseTemplate from "../assets/ex/Dual/Colorless-Dragon.png"
+import FightingDragonDualBaseTemplate from "../assets/ex/Dual/Fighting-Dragon.png"
+import SteelDragonDualBaseTemplate from "../assets/ex/Dual/Metal-Dragon.png"
+import FireDragonDualBaseTemplate from "../assets/ex/Dual/Fire-Dragon.png"
+import WaterDragonDualBaseTemplate from "../assets/ex/Dual/Water-Dragon.png"
+import GrassDragonDualBaseTemplate from "../assets/ex/Dual/Grass-Dragon.png"
+import LightningDragonDualBaseTemplate from "../assets/ex/Dual/Lightning-Dragon.png"
+import PsychicDragonDualBaseTemplate from "../assets/ex/Dual/Psychic-Dragon.png"
+import DarkDragonDualBaseTemplate from "../assets/ex/Dual/Darkness-Dragon.png"
+import DragonColorlessDualBaseTemplate from "../assets/ex/Dual/Dragon-Colorless.png"
+import DragonFightingDualBaseTemplate from "../assets/ex/Dual/Dragon-Fighting.png"
+import DragonSteelDualBaseTemplate from "../assets/ex/Dual/Dragon-Metal.png"
+import DragonFireDualBaseTemplate from "../assets/ex/Dual/Dragon-Fire.png"
+import DragonWaterDualBaseTemplate from "../assets/ex/Dual/Dragon-Water.png"
+import DragonGrassDualBaseTemplate from "../assets/ex/Dual/Dragon-Grass.png"
+import DragonPsychicDualBaseTemplate from "../assets/ex/Dual/Dragon-Psychic.png"
+import DragonLightningDualBaseTemplate from "../assets/ex/Dual/Dragon-Lightning.png"
+import DragonDarkDualBaseTemplate from "../assets/ex/Dual/Dragon-Darkness.png"
+
 import {IImageloader} from "../helpers/imageloader";
 
 type DualTypeDictionary = Record<string, string>;
@@ -230,6 +247,25 @@ export class ExCardImageLoader implements IImageloader{
         "DarkGrass": DarkGrassDualBaseTemplate,
         "DarkLightning": DarkLightningDualBaseTemplate,
         "DarkPsychic": DarkPsychicDualBaseTemplate,
+        //Dragon expansion
+        "DragonColorless": DragonColorlessDualBaseTemplate,
+        "DragonFighting": DragonFightingDualBaseTemplate,
+        "DragonSteel": DragonSteelDualBaseTemplate,
+        "DragonFire": DragonFireDualBaseTemplate,
+        "DragonWater": DragonWaterDualBaseTemplate,
+        "DragonGrass": DragonGrassDualBaseTemplate,
+        "DragonLightning": DragonLightningDualBaseTemplate,
+        "DragonPsychic": DragonPsychicDualBaseTemplate,
+        "DragonDark": DragonDarkDualBaseTemplate,
+        "ColorlessDragon": ColorlessDragonDualBaseTemplate,
+        "FightingDragon": FightingDragonDualBaseTemplate,
+        "SteelDragon": SteelDragonDualBaseTemplate,
+        "FireDragon": FireDragonDualBaseTemplate,
+        "WaterDragon": WaterDragonDualBaseTemplate,
+        "GrassDragon": GrassDragonDualBaseTemplate,
+        "LightningDragon": LightningDragonDualBaseTemplate,
+        "PsychicDragon": PsychicDragonDualBaseTemplate,
+        "DarkDragon": DarkDragonDualBaseTemplate
     }
 
     public getImageSrc(type: Type): string {
@@ -246,12 +282,14 @@ export class ExCardImageLoader implements IImageloader{
                 return WaterTypeBasicTemplate;
             case Type.Grass:
                 return GrassTypeBasicTemplate;
-            case Type.Electric:
-                return ElectricTypeBasicTemplate;
+            case Type.Lightning:
+                return LightningTypeBasicTemplate;
             case Type.Psychic:
                 return PsychTypeBasicTemplate;
             case Type.Dark:
                 return DarkTypeBasicTemplate;
+            case Type.Dragon:
+                return DragonTypeBasicTemplate;
             default:
                 return "";
         }
@@ -259,31 +297,6 @@ export class ExCardImageLoader implements IImageloader{
 
     public getDualImageSrc(firstType: Type, secondType: Type): string{
         return this.dualTypes[firstType.toString() + secondType.toString()];
-    }
-
-    public getExImageSrc(type: Type): string{
-        switch (type) {
-            case Type.Colorless:
-                return ColorlessTypeExTemplate;
-            case Type.Fighting:
-                return FightingTypeExTemplate;
-            case Type.Steel:
-                return SteelTypeExTemplate;
-            case Type.Fire:
-                return FireTypeExTemplate;
-            case Type.Water:
-                return WaterTypeExTemplate;
-            case Type.Grass:
-                return GrassTypeExTemplate;
-            case Type.Electric:
-                return ElectricTypeExTemplate;
-            case Type.Psychic:
-                return PsychTypeExTemplate;
-            case Type.Dark:
-                return DarkTypeExTemplate;
-            default:
-                return "";
-        }
     }
 
     public getShiningImageSrc(type: Type, isDeltaSpecies: boolean): string {
@@ -301,12 +314,14 @@ export class ExCardImageLoader implements IImageloader{
                     return WaterTypeShiningDeltaTemplate;
                 case Type.Grass:
                     return GrassTypeShiningDeltaTemplate;
-                case Type.Electric:
-                    return ElectricTypeShiningDeltaTemplate;
+                case Type.Lightning:
+                    return LightningTypeShiningDeltaTemplate;
                 case Type.Psychic:
                     return PsychTypeShiningDeltaTemplate;
                 case Type.Dark:
                     return DarkTypeShiningDeltaTemplate;
+                case Type.Dragon:
+                    return DragonTypeShiningDeltaTemplate;
                 default:
                     return "";
             }
@@ -325,12 +340,14 @@ export class ExCardImageLoader implements IImageloader{
                 return WaterTypeShiningTemplate;
             case Type.Grass:
                 return GrassTypeShiningTemplate;
-            case Type.Electric:
-                return ElectricTypeShiningTemplate;
+            case Type.Lightning:
+                return LightningTypeShiningTemplate;
             case Type.Psychic:
                 return PsychTypeShiningTemplate;
             case Type.Dark:
                 return DarkTypeShiningTemplate;
+            case Type.Dragon:
+                return DragonTypeShiningTemplate;
             default:
                 return "";
         }
@@ -350,10 +367,12 @@ export class ExCardImageLoader implements IImageloader{
                 return DarkWaterTemplate;
             case Type.Grass:
                 return DarkGrassTemplate;
-            case Type.Electric:
+            case Type.Lightning:
                 return DarkLightningTemplate;
             case Type.Psychic:
                 return DarkPsychicTemplate;
+            case Type.Dragon:
+                return DarkDragonTemplate;
             case Type.Dark:
                 return DarkTypeBasicTemplate;
             default:
@@ -376,12 +395,14 @@ export class ExCardImageLoader implements IImageloader{
                     return EReaderExWaterTemplate;
                 case Type.Grass:
                     return EReaderExGrassTemplate;
-                case Type.Electric:
+                case Type.Lightning:
                     return EReaderExLightningTemplate;
                 case Type.Psychic:
                     return EReaderExPsychicTemplate;
                 case Type.Dark:
                     return EReaderExDarkTemplate;
+                case Type.Dragon:
+                    return EReadExDragonTemplate;
                 default:
                     return "";
             }
@@ -400,12 +421,14 @@ export class ExCardImageLoader implements IImageloader{
                 return EReaderWaterTemplate;
             case Type.Grass:
                 return EReaderGrassTemplate;
-            case Type.Electric:
+            case Type.Lightning:
                 return EReaderLightningTemplate;
             case Type.Psychic:
                 return EReaderPsychicTemplate;
             case Type.Dark:
                 return EReaderDarkTemplate;
+            case Type.Dragon:
+                return EReaderDragonTemplate;
             default:
                 return "";
         }
@@ -425,12 +448,14 @@ export class ExCardImageLoader implements IImageloader{
                 return PrismWaterTemplate;
             case Type.Grass:
                 return PrismGrassTemplate;
-            case Type.Electric:
+            case Type.Lightning:
                 return PrismLightningTemplate;
             case Type.Psychic:
                 return PrismPsychicTemplate;
             case Type.Dark:
                 return PrismDarkTemplate;
+            case Type.Dragon:
+                return PrismDragonTemplate;
             default:
                 return "";
         }

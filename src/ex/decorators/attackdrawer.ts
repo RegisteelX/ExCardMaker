@@ -126,7 +126,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                     return attack.energyCost.length < 3;
                 })
                 .applyStyleIf("color", "#FFFFFF", () => {
-                    return pokemonEx.isDark;
+                    return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
                 })
                 .appendTo(attackRoot);
 
@@ -137,13 +137,17 @@ export class AttackDrawer extends AbstractElementDrawer{
                     const attackDamage = $(`<div class='poke-attack-damage'>${splitAttackValue.value}</div>`);
                     attackDamage
                         .applyStyleIf("color", "#FFFFFF", () => {
-                            return pokemonEx.isDark;
+                            return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
                         })
                         .appendTo(attackWrapper);
 
                     if(splitAttackValue.postfix != null){
                         const attackPostfix = $(`<div class='poke-attack-damage-postfix'>${splitAttackValue.postfix}</div>`);
-                        attackPostfix.appendTo(attackWrapper);
+                        attackPostfix
+                            .applyStyleIf("color", "#FFFFFF", () => {
+                                return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
+                            })
+                            .appendTo(attackWrapper);
                     }
                     else{
                         $("<div class='poke-attack-damage-postfix-placeholder'></div>").appendTo(attackWrapper);
@@ -171,7 +175,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                         return attack.energyCost.length == 1;
                     })
                     .applyStyleIf("color", "#FFFFFF", () => {
-                        return pokemonEx.isDark;
+                        return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
                     })
                     .appendTo(attackWrapper);
             }
@@ -216,7 +220,7 @@ export class AttackDrawer extends AbstractElementDrawer{
             .css("font-size", `${this.descriptionFontSize}px`)
             .css("line-height", `${this.descriptionFontSize + 1}px`)
             .applyStyleIf("color", "#FFFFFF", () => {
-                return pokemonEx.isDark;
+                return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
             });
 
         abilityName.appendTo(ability);
@@ -353,7 +357,6 @@ export class AttackDrawer extends AbstractElementDrawer{
 
     private getHighestAttackHeight(): number{
         const card = $("#card");
-        const pokemonEx = this.pokemon as IPokemonEx;
         let highest = 0;
 
         if(this.hasAbility()){

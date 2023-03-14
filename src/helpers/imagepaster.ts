@@ -7,6 +7,7 @@ export class ImagePaster{
     }
 
     public bindListener(): void {
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         window.addEventListener("paste", (event: any) => {
             const items = (event.clipboardData || event.originalEvent.clipboardData).items;
             for (let i = 0; i < items.length; i++) {

@@ -15,6 +15,7 @@ export const CardDetailsSection = ({ details, onChange }: CardDetailsFormProps) 
     const [cardNumber, setCardNumber] = useState(details.cardNumber || "");
     const [setTotal, setSetTotal] = useState(details.setTotal || "");
     const [rarity, setRarity] = useState(details.rarity || Rarity.COMMON);
+    // eslint-disable-next-line  @typescript-eslint/no-unused-vars
     const [icon, setIcon] = useState(details.icon || "");
 
     const handleIllustratorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,9 +54,9 @@ export const CardDetailsSection = ({ details, onChange }: CardDetailsFormProps) 
         onChange({...details, rarity: value});
     };
 
-    const handleIconChange = (imageUrl: string) => {
-        setIcon(imageUrl);
-        onChange({...details, icon: imageUrl});
+    const handleIconChange = (imageUrl: string | null) => {
+        setIcon(imageUrl as string);
+        onChange({...details, icon: imageUrl!});
     };
 
     return (
