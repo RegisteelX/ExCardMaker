@@ -165,6 +165,10 @@ p{
   position: absolute;
   display: flex;
 
+  &.poke-ex-elements{
+    z-index: 3;
+  }
+
   &.poke-delta-species-border{
     z-index: 1;
   }
@@ -431,9 +435,5 @@ p{
 
   .poke-ability-description{
     margin-left: 41px;
-  }
-
-  &.poke-ex-elements{
-    z-index: 3;
   }
 }

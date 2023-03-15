@@ -6,7 +6,6 @@ import ExElements from "../../assets/ex/Borders/ex_elements.png";
 import ExBorder from "../../assets/ex/Borders/ex.png";
 import ExBorderEReader from "../../assets/ex/Borders/ex_e_reader.png";
 import ExShatteredBorder from "../../assets/ex/Borders/shattered.png";
-import {IsEvolved} from "../../pokemon/evolution";
 
 export class ExDrawer extends AbstractElementDrawer{
 
@@ -30,9 +29,6 @@ export class ExDrawer extends AbstractElementDrawer{
 
             $(`<img class='card-element poke-ex-elements' src="${ExElements}">`)
                         .setElementPosition(31, 33, null, null)
-                        .applyStyleIf("z-index", 1, (): boolean => {
-                            return IsEvolved(pokemonEx);
-                        })
                         .appendTo(this.root);
         }
     }

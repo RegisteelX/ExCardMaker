@@ -27,7 +27,7 @@ export class AttackDrawer extends AbstractElementDrawer{
     private readonly SLOT_GAP_NONE: number = 0;
     private readonly MAX_INNER_HEIGHT = 910;
     private readonly INITIAL_DESCRIPTION_FONT_SIZE = 32;
-    private readonly MIN_FONT_SIZE = 19;
+    private readonly MIN_FONT_SIZE = 16;
 
     private descriptionFontSize: number;
 
@@ -266,9 +266,6 @@ export class AttackDrawer extends AbstractElementDrawer{
             this.redrawElements();
 
             noOverlap = this.noAttacksOverlap();
-
-            console.log(`height: ${height}`);
-            console.log(`no overlap: ${noOverlap}`);
             if(!noOverlap && this.reduceGapSize() || height > this.MAX_INNER_HEIGHT && this.reduceGapSize()){
                 continue;
             }
@@ -280,8 +277,10 @@ export class AttackDrawer extends AbstractElementDrawer{
             }
         }
 
-        this.clearElements();
-        this.redrawElements();
+        if(this.rescaling){
+            this.clearElements();
+            this.redrawElements();
+        }
 
         let tryIncreaseFontSize = true;
         //Try increasing font size again after repositioning.
@@ -294,6 +293,7 @@ export class AttackDrawer extends AbstractElementDrawer{
             height = this.getHighestAttackHeight();
             noOverlap = this.noAttacksOverlap();
 
+            console.log(height, noOverlap, this.descriptionFontSize);
             if(height > this.MAX_INNER_HEIGHT || !noOverlap){
                 this.descriptionFontSize -= 1;
                 this.changeDescriptionFontSize(this.descriptionFontSize);
@@ -354,7 +354,7 @@ export class AttackDrawer extends AbstractElementDrawer{
     }
 
     private changeDescriptionFontSize(amount: number): void{
-        const descriptions = $("#card").find("poke-description");
+        const descriptions = $("#card").find(".poke-description");
         descriptions.each((index, element) => {
             $(element)
                 .css("font-size", `${amount}px`)
@@ -417,8 +417,8 @@ export class AttackDrawer extends AbstractElementDrawer{
         for(let i = 0; i < attacks.length; ++i){
             if(i + 1 >= attacks.length) break;
 
-            const attackOne = $(attacks[0]);
-            const attackTwo = $(attacks[1]);
+            const attackOne = $(attacks[i]);
+            const attackTwo = $(attacks[i + 1]);
 
             if(keepGapInMind && doDivsOverlapWithOffset(attackOne, attackTwo, { bottom: this.SLOT_GAP_INITIAL })){
                 return false;
