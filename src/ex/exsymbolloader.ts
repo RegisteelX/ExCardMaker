@@ -9,7 +9,7 @@ export class ExSymbolLoader {
     private static cache: Map<string, HTMLImageElement> = new Map();
 
     public loadSymbol(variant: Variant, invert = false): HTMLImageElement {
-        const key = `${variant}`;
+        const key = `${variant}-${invert}`;
         let image = ExSymbolLoader.cache.get(key);
         if (image) {
             return image;
