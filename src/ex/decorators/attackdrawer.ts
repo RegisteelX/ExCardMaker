@@ -256,6 +256,7 @@ export class AttackDrawer extends AbstractElementDrawer{
 
         let failed = false;
         let hasResized = false;
+
         //Reposition attacks in case they overlap or exceed the inner card.
         while(height > this.MAX_INNER_HEIGHT || !noOverlap){
             hasResized = true;
@@ -265,6 +266,9 @@ export class AttackDrawer extends AbstractElementDrawer{
             this.redrawElements();
 
             noOverlap = this.noAttacksOverlap();
+
+            console.log(`height: ${height}`);
+            console.log(`no overlap: ${noOverlap}`);
             if(!noOverlap && this.reduceGapSize() || height > this.MAX_INNER_HEIGHT && this.reduceGapSize()){
                 continue;
             }
@@ -275,6 +279,9 @@ export class AttackDrawer extends AbstractElementDrawer{
                 break;
             }
         }
+
+        this.clearElements();
+        this.redrawElements();
 
         let tryIncreaseFontSize = true;
         //Try increasing font size again after repositioning.
@@ -296,7 +303,7 @@ export class AttackDrawer extends AbstractElementDrawer{
 
         if(!failed){
             //Spacing rule for 2 attacks or 1 attack + ability having an extra slot separating them.
-            if((pokemonEx.attacks.length == 2 || pokemonEx.attacks.length == 1 && this.hasAbility()) && hasResized){
+            if((pokemonEx.attacks.length == 2 && !this.hasAbility() || pokemonEx.attacks.length == 1 && this.hasAbility()) && hasResized){
                 const card = $("#card");
                 const attackList = card.find(".poke-attack-wrapper");
                 const attack = this.hasAbility() ? $(attackList[0]): $(attackList[1]);
