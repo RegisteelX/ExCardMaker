@@ -38,7 +38,6 @@
     "@typescript-eslint/parser": "^5.54.1",
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.0.6",
-    "babel-plugin-lodash": "^3.3.4",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-react-app": "^3.1.2",

@@ -28,7 +28,7 @@ export class ExDrawer extends AbstractElementDrawer{
                         .setElementPosition(0, 0, null, null)
                         .appendTo(this.root);
 
-            $(`<img class='card-element' src="${ExElements}">`)
+            $(`<img class='card-element poke-ex-elements' src="${ExElements}">`)
                         .setElementPosition(31, 33, null, null)
                         .applyStyleIf("z-index", 1, (): boolean => {
                             return IsEvolved(pokemonEx);
