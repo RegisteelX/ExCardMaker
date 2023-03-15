@@ -26,8 +26,7 @@ export class NameDrawer extends AbstractElementDrawer{
         nameRoot.append(`<p class='poke-name'>${this.pokemon.name}</p>`);
 
         if(pokemonEx.variant === Variant.EX || pokemonEx.variant === Variant.GOLDSTAR || pokemonEx.variant === Variant.PRISM){
-            const wrapper = $("<div class='poke-name-variant-wrapper'></div>")
-            console.log(this.PokemonIsOfType(Type.Dragon), pokemonEx.isDark, this.PokemonIsDualType(), this.shouldInvert());
+            const wrapper = $("<div class='poke-name-variant-wrapper'></div>");
             const symbol = $(this.symbolLoader.loadSymbol(pokemonEx.variant, this.shouldInvert()));
             wrapper.append(symbol);
             nameRoot.append(wrapper);
