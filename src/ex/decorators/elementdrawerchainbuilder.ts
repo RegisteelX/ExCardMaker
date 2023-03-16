@@ -16,6 +16,7 @@ import {HolonDrawer} from "./holondrawer";
 import {DeltaDrawer} from "./deltadrawer";
 import {EReaderDrawer} from "./ereaderdrawer";
 import {ExDrawer} from "./exdrawer";
+
 export class PredefinedElementDrawerChain implements IElementDrawer{
 
     private readonly drawers: AbstractElementDrawer[]

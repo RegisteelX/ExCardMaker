@@ -29,12 +29,17 @@ export class TemplateDrawer extends AbstractElementDrawer{
                 case Variant.EX: //ExDrawer
                 case Variant.EX_SHATTERED: //ExDrawer
                 case Variant.STANDARD:
-                    if(pokemonEx.isDark){
+                    if(pokemonEx.subFlags.isDark){
                         this.cardTemplate.src = this.cardImageLoader.getDarkImageSrc(this.pokemon.type);
                         break;
                     }
 
-                    if(pokemonEx.isEReader){
+                    if(pokemonEx.subFlags.isCrystal){
+                        this.cardTemplate.src = this.cardImageLoader.getCrystalImageSrc();
+                        break;
+                    }
+
+                    if(pokemonEx.subFlags.isEReader){
                         this.cardTemplate.src = this.cardImageLoader.getEReaderImageSrc(this.pokemon.type, false);
                         break;
                     }
@@ -48,7 +53,7 @@ export class TemplateDrawer extends AbstractElementDrawer{
                     this.cardTemplate.src = this.cardImageLoader.getDualImageSrc(this.pokemon.type, pokemonEx.dualType!);
                     break;
                 case Variant.GOLDSTAR:
-                    this.cardTemplate.src = this.cardImageLoader.getShiningImageSrc(this.pokemon.type, pokemonEx.isDeltaSpecies);
+                    this.cardTemplate.src = this.cardImageLoader.getShiningImageSrc(this.pokemon.type, pokemonEx.subFlags.isDeltaSpecies);
                     break;
             }
             this.cardTemplate.onload = () => {

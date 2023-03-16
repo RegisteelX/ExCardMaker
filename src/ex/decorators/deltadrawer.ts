@@ -12,7 +12,7 @@ export class DeltaDrawer extends AbstractElementDrawer{
 
     public async drawElement(): Promise<void> {
         const pokemonEx = this.pokemon as IPokemonEx;
-        if(pokemonEx.isDeltaSpecies){
+        if(pokemonEx.subFlags.isDeltaSpecies){
             if(pokemonEx.variant != Variant.GOLDSTAR){
                 const deltaSpeciesBorder = $(`<img src='${IsEvolved(pokemonEx) ? DeltaBorderEvolution : DeltaBorderBasic}' class='poke-delta-species-border card-element'>`)
                 deltaSpeciesBorder

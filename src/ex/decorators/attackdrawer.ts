@@ -126,7 +126,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                     return attack.energyCost.length < 3;
                 })
                 .applyStyleIf("color", "#FFFFFF", () => {
-                    return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
+                    return pokemonEx.subFlags.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
                 })
                 .appendTo(attackRoot);
 
@@ -137,7 +137,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                     const attackDamage = $(`<div class='poke-attack-damage'>${splitAttackValue.value}</div>`);
                     attackDamage
                         .applyStyleIf("color", "#FFFFFF", () => {
-                            return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
+                            return pokemonEx.subFlags.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
                         })
                         .appendTo(attackWrapper);
 
@@ -145,7 +145,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                         const attackPostfix = $(`<div class='poke-attack-damage-postfix'>${splitAttackValue.postfix}</div>`);
                         attackPostfix
                             .applyStyleIf("color", "#FFFFFF", () => {
-                                return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
+                                return pokemonEx.subFlags.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
                             })
                             .appendTo(attackWrapper);
                     }
@@ -175,7 +175,7 @@ export class AttackDrawer extends AbstractElementDrawer{
                         return attack.energyCost.length == 1;
                     })
                     .applyStyleIf("color", "#FFFFFF", () => {
-                        return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
+                        return pokemonEx.subFlags.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
                     })
                     .appendTo(attackWrapper);
             }
@@ -204,7 +204,7 @@ export class AttackDrawer extends AbstractElementDrawer{
 
         const pokemonEx = this.pokemon as IPokemonEx;
         let position = this.slots[0];
-        if(pokemonEx.variant != Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.isDeltaSpecies || pokemonEx.isDark){
+        if(pokemonEx.variant != Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.subFlags.isDeltaSpecies || pokemonEx.subFlags.isDark){
             position = this.slots[1];
         }
 
@@ -220,7 +220,7 @@ export class AttackDrawer extends AbstractElementDrawer{
             .css("font-size", `${this.descriptionFontSize}px`)
             .css("line-height", `${this.descriptionFontSize + 1}px`)
             .applyStyleIf("color", "#FFFFFF", () => {
-                return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
+                return pokemonEx.subFlags.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
             });
 
         abilityName.appendTo(ability);
@@ -485,7 +485,7 @@ export class AttackDrawer extends AbstractElementDrawer{
         }
 
         if (ability != null) {
-            const slot = variant !== Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.isDeltaSpecies || pokemonEx.isDark ? 1 : 0;
+            const slot = variant !== Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.subFlags.isDeltaSpecies || pokemonEx.subFlags.isDark ? 1 : 0;
             const height = $(".poke-ability").height()!;
 
             /*if(!this.rescaling && this.singleAttackWithoutDescription() || !this.rescaling && this.singleAttack() && height <= 143){

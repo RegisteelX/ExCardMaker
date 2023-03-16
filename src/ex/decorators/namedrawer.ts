@@ -41,6 +41,6 @@ export class NameDrawer extends AbstractElementDrawer{
 
     private shouldInvert(): boolean{
         const pokemonEx = this.pokemon as IPokemonEx;
-        return pokemonEx.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
+        return pokemonEx.subFlags.isDark || this.PokemonIsOfType(Type.Dragon) && !this.PokemonIsDualType();
     }
 }

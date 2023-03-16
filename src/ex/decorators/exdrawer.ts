@@ -13,7 +13,7 @@ export class ExDrawer extends AbstractElementDrawer{
         const pokemonEx = this.pokemon as IPokemonEx;
         if(pokemonEx.variant === Variant.EX || pokemonEx.variant === Variant.EX_SHATTERED){
             let imageSrc: string;
-            if(pokemonEx.isEReader){
+            if(pokemonEx.subFlags.isEReader){
                 imageSrc = ExBorderEReader;
             }
             else if(pokemonEx.variant === Variant.EX){

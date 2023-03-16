@@ -10,7 +10,7 @@ export class EReaderDrawer extends AbstractElementDrawer{
     private readonly E_READER_OFFSET_ICON_X: number = -10;
     public async drawElement(): Promise<void> {
         const pokemonEx = this.pokemon as IPokemonEx;
-        if(pokemonEx.isEReader){
+        if(pokemonEx.subFlags.isEReader){
             if(pokemonEx.weaknesses.length > 0){
                 $(".poke-weakness-wrapper")
                     .increasePosition("top", this.E_READER_OFFSET + 4);

@@ -3,6 +3,7 @@ import {Variant} from "./variant";
 import {Type} from "../pokemon/type";
 import {IAbility, LegacyAbilityType} from "../pokemon/ability";
 import {IHolonExtension} from "./holonextension";
+import {IPokemonFlags} from "./pokemonflags";
 
 export interface IPokemonEx extends IPokemon{
     prefix?: string;
@@ -11,9 +12,6 @@ export interface IPokemonEx extends IPokemon{
     resistances: [Type?, Type?];
     ability?: { type: LegacyAbilityType, inner: IAbility }
     dualType?: Type
-    isDark: boolean;
-    isTeamRocket: boolean
     holon?: IHolonExtension;
-    isDeltaSpecies: boolean;
-    isEReader: boolean;
+    subFlags: IPokemonFlags;
 }

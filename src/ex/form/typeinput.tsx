@@ -12,7 +12,6 @@ interface TypeInputProps {
 
 const TypeInput = ({ name, onChange, value, nullable = false }: TypeInputProps) => {
     const [selectedType, setSelectedType] = useState<Type | undefined>(value);
-
     const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const type = event.target.value as Type;
         if (selectedType === type && nullable) {

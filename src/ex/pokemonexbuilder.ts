@@ -18,10 +18,13 @@ export class PokemonExBuilder implements IPokemonBuilder{
         variant: Variant.STANDARD,
         weaknesses: [],
         resistances: [],
-        isDark: false,
-        isTeamRocket: false,
-        isDeltaSpecies: false,
-        isEReader: false
+        subFlags: {
+            isDark: false,
+            isTeamRocket: false,
+            isDeltaSpecies: false,
+            isEReader: false,
+            isCrystal: false
+        }
     };
 
     constructor(name: string){
@@ -60,7 +63,7 @@ export class PokemonExBuilder implements IPokemonBuilder{
     }
 
     public isEReader(): PokemonExBuilder{
-        this.pokemon.isEReader = true;
+        this.pokemon.subFlags.isEReader = true;
         return this;
     }
 
@@ -80,13 +83,18 @@ export class PokemonExBuilder implements IPokemonBuilder{
     }
 
     public isDark(): PokemonExBuilder{
-        this.pokemon.isDark = true;
+        this.pokemon.subFlags.isDark = true;
         return this;
     }
 
     public isTeamRocket(): PokemonExBuilder{
         this.setPrefix("ROCKET'S");
-        this.pokemon.isTeamRocket = true;
+        this.pokemon.subFlags.isTeamRocket = true;
+        return this;
+    }
+
+    public isCrystal(): PokemonExBuilder{
+        this.pokemon.subFlags.isCrystal = true;
         return this;
     }
 
@@ -137,7 +145,7 @@ export class PokemonExBuilder implements IPokemonBuilder{
     }
 
     public isDeltaSpecies(): PokemonExBuilder{
-        this.pokemon.isDeltaSpecies = true;
+        this.pokemon.subFlags.isDeltaSpecies = true;
         return this;
     }
 

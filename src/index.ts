@@ -6,15 +6,15 @@ import React from 'react';
 import {createRoot} from 'react-dom/client';
 import {PokemonExForm} from "./ex/form/pokemonexform";
 
+import {PokemonExBuilder} from "./ex/pokemonexbuilder";
+import {PredefinedElementDrawerChain} from "./ex/decorators/elementdrawerchainbuilder";
+import {VersionControl} from "./helpers/versioncontrol";
+
 import Icon from "./assets/ex/Symbols/promo.png";
 
 import "./style/bootstrap.scss"
 import "./style/site.scss"
 import "./style/ex_style.scss"
-
-import {PokemonExBuilder} from "./ex/pokemonexbuilder";
-import {PredefinedElementDrawerChain} from "./ex/decorators/elementdrawerchainbuilder";
-import {VersionControl} from "./helpers/versioncontrol";
 
 const pokemon = new PokemonExBuilder("Custom Card")
     .setType(Type.Colorless)
@@ -37,5 +37,5 @@ chain.draw();
 const root = createRoot(document.getElementById('settings-form') as Element);
 root.render(React.createElement(PokemonExForm));
 
-const versionControl = new VersionControl(1, 6, 0);
+const versionControl = new VersionControl(1, 6, 1);
 versionControl.createFooter();

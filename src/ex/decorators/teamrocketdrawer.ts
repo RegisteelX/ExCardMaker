@@ -16,7 +16,8 @@ export class TeamRocketDrawer extends AbstractElementDrawer{
     }
 
     public async drawElement(): Promise<void> {
-        if((this.pokemon as IPokemonEx).isTeamRocket){
+        const pokemonEx = this.pokemon as IPokemonEx;
+        if(pokemonEx.subFlags.isTeamRocket){
             const rocketSymbol = $(`<img src='${TeamRocketSymbol}' class='card-element'>`)
             rocketSymbol.setElementPosition(null, null, 60, 86).appendTo(this.root);
 

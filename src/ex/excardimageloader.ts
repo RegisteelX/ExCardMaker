@@ -142,6 +142,8 @@ import PrismLightningTemplate from "../assets/ex/Prism/lightning.png";
 import PrismSteelTemplate from "../assets/ex/Prism/metal.png";
 import PrismPsychicTemplate from "../assets/ex/Prism/psychic.png";
 
+import CrystalTemplate from "../assets/ex/Crystal/Crystal.png";
+
 //Dragon expansion
 import DragonTypeBasicTemplate from "../assets/ex/Basic/Dragon.png"
 import DragonTypeShiningTemplate from "../assets/ex/Shining/Dragon.png"
@@ -459,5 +461,9 @@ export class ExCardImageLoader implements IImageloader{
             default:
                 return "";
         }
+    }
+
+    public getCrystalImageSrc(): string{
+        return CrystalTemplate;
     }
 }

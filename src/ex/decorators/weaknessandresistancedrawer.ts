@@ -51,6 +51,6 @@ export class WeaknessAndResistanceDrawer extends AbstractElementDrawer{
 
     private mustInvert(): boolean{
         const pokemonEx = this.pokemon as IPokemonEx;
-        return this.PokemonIsOfType(Type.Dark) || this.PokemonIsOfType(Type.Dragon) || pokemonEx.isDark;
+        return this.PokemonIsOfType(Type.Dark) || this.PokemonIsOfType(Type.Dragon) || pokemonEx.subFlags.isDark;
     }
 }

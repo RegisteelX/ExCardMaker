@@ -25,7 +25,8 @@ enum SpecialType {
     NONE = "None",
     DARK = "Dark",
     EREADER = "E-Reader",
-    DELTASPECIES = "Delta Species"
+    DELTASPECIES = "Delta Species",
+    CRYSTAL = "Crystal"
 }
 
 export function PokemonExForm() {
@@ -34,7 +35,7 @@ export function PokemonExForm() {
     const [teamRocket, setTeamRocket] = useState(false);
     const [type, setType] = useState(Type.Colorless);
     const [dualType, setDualType] = useState(undefined);
-    const [variant, setSelectedVariant] = useState<Variant>(Variant.STANDARD);
+    const [variant, setSelectedVariant] = useState<Variant | undefined>(Variant.STANDARD);
     const [specialType, setSpecialType] = useState<SpecialType>(SpecialType.NONE);
     const [hp, setHp] = useState(0);
     const [image, setImage] = useState('');
@@ -67,6 +68,7 @@ export function PokemonExForm() {
     };
 
     const handleDualTypeChange = (value: Type | undefined) => {
+        console.log(value, specialType, variant);
         if(value != null && specialType !== SpecialType.DELTASPECIES && specialType !== SpecialType.NONE){
             setSpecialType(SpecialType.NONE);
             return;
@@ -104,6 +106,11 @@ export function PokemonExForm() {
         if(dualType != null && value !== SpecialType.DELTASPECIES){
             setSpecialType(SpecialType.NONE);
             return;
+        }
+
+        if(value === SpecialType.CRYSTAL){
+            setType(Type.Colorless);
+            setSelectedVariant(Variant.STANDARD);
         }
 
         setSpecialType(value);
@@ -242,6 +249,9 @@ export function PokemonExForm() {
             case SpecialType.DELTASPECIES:
                 pokemonBuilder.isDeltaSpecies();
                 break;
+            case SpecialType.CRYSTAL:
+                pokemonBuilder.isCrystal();
+                break;
         }
 
         const pokemon = pokemonBuilder.build();
@@ -347,7 +357,7 @@ export function PokemonExForm() {
                     </fieldset>
                     <fieldset>
                         <legend>Attacks</legend>
-                        <AttackInput name="attacks" label="Attacks" value={attacks} onChange={handleAttackChange} />
+                        <AttackInput label="Attacks" value={attacks} onChange={handleAttackChange} />
                     </fieldset>
                     <fieldset>
                         <legend>Weakness, resistance and retreat.</legend>
