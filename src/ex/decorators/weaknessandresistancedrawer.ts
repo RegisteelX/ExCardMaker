@@ -10,6 +10,7 @@ import NoResistanceTextAlt from "../../assets/ex/Symbols/resistance_n_d.png";
 
 import ResistanceText from "../../assets/ex/Symbols/resistance.png";
 import ResistanceTextAlt from "../../assets/ex/Symbols/resistance_d.png";
+import {isNullOrEmpty} from "../../helpers/stringhelper";
 
 export class WeaknessAndResistanceDrawer extends AbstractElementDrawer{
     private energySymbolLoader: ExEnergySymbolLoader;
@@ -24,7 +25,7 @@ export class WeaknessAndResistanceDrawer extends AbstractElementDrawer{
         if(pokemonEx.weaknesses.length > 0){
             const weaknessWrapper = $("<div class='card-element poke-weakness-wrapper'></div>")
             for (const weakness of pokemonEx.weaknesses){
-                if(weakness == null) continue;
+                if(isNullOrEmpty(weakness)) continue;
                 const symbol = $(this.energySymbolLoader.getSymbolImage(weakness!)).clone();
                 symbol.appendTo(weaknessWrapper);
             }
@@ -34,7 +35,7 @@ export class WeaknessAndResistanceDrawer extends AbstractElementDrawer{
         if(pokemonEx.resistances.length > 0){
             const resistanceWrapper = $("<div class='card-element poke-resistance-wrapper'></div>")
             for (const resistance of pokemonEx.resistances){
-                if(resistance == null) continue;
+                if(isNullOrEmpty(resistance)) continue;
                 const symbol = $(this.energySymbolLoader.getSymbolImage(resistance!)).clone();
                 symbol.appendTo(resistanceWrapper);
             }
