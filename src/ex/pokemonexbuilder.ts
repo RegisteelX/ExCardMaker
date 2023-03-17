@@ -99,12 +99,12 @@ export class PokemonExBuilder implements IPokemonBuilder{
     }
 
     public setWeaknesses(weaknesses: [Type?, Type?]): PokemonExBuilder{
-        this.pokemon.weaknesses = weaknesses;
+        this.pokemon.weaknesses = weaknesses.filter(t => t != null) as [Type?, Type?];
         return this;
     }
 
     public setResistances(resistances: [Type?, Type?]): PokemonExBuilder{
-        this.pokemon.resistances = resistances;
+        this.pokemon.resistances = resistances.filter(r => r != null) as [Type?, Type?];
         return this;
     }
 
