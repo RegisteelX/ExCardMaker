@@ -1,6 +1,7 @@
 export enum LegacyAbilityType{
     POWER = "power",
-    BODY = "body"
+    BODY = "body",
+    MYTH = "myth"
 }
 
 export interface IAbility {

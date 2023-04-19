@@ -82,6 +82,11 @@ export class PokemonExBuilder implements IPokemonBuilder{
         return this;
     }
 
+    public isMythical(): PokemonExBuilder{
+        this.pokemon.variant = Variant.MYTHICAL;
+        return this;
+    }
+
     public isDark(): PokemonExBuilder{
         this.pokemon.subFlags.isDark = true;
         return this;

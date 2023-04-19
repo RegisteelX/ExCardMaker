@@ -142,6 +142,16 @@ import PrismLightningTemplate from "../assets/ex/Prism/lightning.png";
 import PrismSteelTemplate from "../assets/ex/Prism/metal.png";
 import PrismPsychicTemplate from "../assets/ex/Prism/psychic.png";
 
+import MythicalColorlessTemplate from "../assets/ex/Mythical/colorless.png";
+import MythicalDarkTemplate from "../assets/ex/Mythical/darkness.png";
+import MythicalFightingTemplate from "../assets/ex/Mythical/fighting.png";
+import MythicalFireTemplate from "../assets/ex/Mythical/fire.png";
+import MythicalWaterTemplate from "../assets/ex/Mythical/water.png";
+import MythicalGrassTemplate from "../assets/ex/Mythical/grass.png";
+import MythicalLightningTemplate from "../assets/ex/Mythical/lightning.png";
+import MythicalSteelTemplate from "../assets/ex/Mythical/metal.png";
+import MythicalPsychicTemplate from "../assets/ex/Mythical/psychic.png";
+
 import CrystalTemplate from "../assets/ex/Crystal/Crystal.png";
 
 //Dragon expansion
@@ -152,6 +162,7 @@ import DarkDragonTemplate from "../assets/ex/Dark/dragon.png";
 import EReaderDragonTemplate from "../assets/ex/e-Reader/Dragon.png";
 import EReadExDragonTemplate from "../assets/ex/e-Reader/ex/Dragon.png";
 import PrismDragonTemplate from "../assets/ex/Prism/Dragon.png";
+import MythicalDragonTemplate from "../assets/ex/Mythical/Dragon.png";
 import ColorlessDragonDualBaseTemplate from "../assets/ex/Dual/Colorless-Dragon.png"
 import FightingDragonDualBaseTemplate from "../assets/ex/Dual/Fighting-Dragon.png"
 import SteelDragonDualBaseTemplate from "../assets/ex/Dual/Metal-Dragon.png"
@@ -458,6 +469,33 @@ export class ExCardImageLoader implements IImageloader{
                 return PrismDarkTemplate;
             case Type.Dragon:
                 return PrismDragonTemplate;
+            default:
+                return "";
+        }
+    }
+
+    public getMythicalImageSrc(type: Type): string{
+        switch (type) {
+            case Type.Colorless:
+                return MythicalColorlessTemplate;
+            case Type.Fighting:
+                return MythicalFightingTemplate;
+            case Type.Steel:
+                return MythicalSteelTemplate;
+            case Type.Fire:
+                return MythicalFireTemplate;
+            case Type.Water:
+                return MythicalWaterTemplate;
+            case Type.Grass:
+                return MythicalGrassTemplate;
+            case Type.Lightning:
+                return MythicalLightningTemplate;
+            case Type.Psychic:
+                return MythicalPsychicTemplate;
+            case Type.Dark:
+                return MythicalDarkTemplate;
+            case Type.Dragon:
+                return MythicalDragonTemplate;
             default:
                 return "";
         }

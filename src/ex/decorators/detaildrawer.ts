@@ -9,16 +9,28 @@ import RareAlt from "../../assets/ex/Symbols/rare_d.png";
 import Rare from "../../assets/ex/Symbols/rare.png";
 import Ultra from "../../assets/ex/Symbols/ultra.png";
 import {IPokemonEx} from "../pokemonex";
+import {Variant} from "../variant";
 
 export class DetailDrawer extends AbstractElementDrawer{
 
     public async drawElement(): Promise<void> {
         if(this.pokemon.details != null){
+            const pokemonEx = this.pokemon as IPokemonEx;
             const details = this.pokemon.details;
 
             if(details.illustrator != null){
                 const illustrator = $(`<div class='poke-illustrator card-element'>Illus. ${details.illustrator}</div>`)
-                illustrator.setElementPosition(485, null, 79, null)
+                illustrator
+                    .setElementPosition(485, null, 79, null)
+                    .applyStyleIf("right", "initial", () => {
+                        return pokemonEx.variant === Variant.MYTHICAL;
+                    })
+                    .applyStyleIf("left", "190px", () => {
+                        return pokemonEx.variant === Variant.MYTHICAL;
+                    })
+                    .applyStyleIf("text-align", "left", () => {
+                        return pokemonEx.variant === Variant.MYTHICAL;
+                    })
                     .appendTo(this.root);
             }
 

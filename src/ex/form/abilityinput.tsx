@@ -3,6 +3,7 @@ import {IAbility, LegacyAbilityType} from "../../pokemon/ability";
 
 import PokePower from "../../assets/ex/Symbols/power.png";
 import PokeBody from "../../assets/ex/Symbols/body.png";
+import PokeMyth from "../../assets/ex/Symbols/mythical.png";
 
 interface Props {
     onChangeAbility: (ability: IExAbility | undefined) => void;
@@ -84,6 +85,15 @@ const AbilityInput = ({ onChangeAbility }: Props) => {
                                 onChange={handleChangeType}
                             />
                             <img src={PokeBody}/>
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                value={LegacyAbilityType.MYTH}
+                                checked={type === LegacyAbilityType.MYTH}
+                                onChange={handleChangeType}
+                            />
+                            <img src={PokeMyth}/>
                         </label>
                     </div>
                     <div>

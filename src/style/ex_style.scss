@@ -66,6 +66,7 @@
 
 $pokeBodyColor: #228c2f;
 $pokePowerColor: #ce2315;
+$pokeMythColor: #d75904;
 
 html{
   background-color: black;
@@ -210,6 +211,10 @@ p{
         &.power{
           color: $pokePowerColor;
         }
+
+        &.myth{
+          color: $pokeMythColor;
+        }
       }
     }
   }
@@ -238,7 +243,7 @@ p{
         display: inline-block;
         margin-left: 18px;
         position: absolute;
-        bottom: 7px;
+        bottom: 8px;
       }
     }
   }

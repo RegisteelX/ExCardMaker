@@ -16,8 +16,9 @@ import {ItalicTextReplacer} from "../replacers/italictextreplacer";
 import {doDivsOverlap, doDivsOverlapWithOffset} from "../../helpers/elementhelper";
 import {IsEvolved} from "../../pokemon/evolution";
 
-import PokePower from "../../assets/ex/Symbols/power.png";
 import PokeBody from "../../assets/ex/Symbols/body.png";
+import PokePower from "../../assets/ex/Symbols/power.png";
+import PokeMyth from "../../assets/ex/Symbols/mythical.png";
 
 export class AttackDrawer extends AbstractElementDrawer{
 
@@ -196,13 +197,26 @@ export class AttackDrawer extends AbstractElementDrawer{
     }
 
     private drawAbility(): void {
-        const abilityImage = (this.pokemon as IPokemonEx).ability!.type === LegacyAbilityType.POWER ? PokePower : PokeBody;
+        const pokemonEx = this.pokemon as IPokemonEx;
+
+        let abilityImage = "";
+        switch (pokemonEx.ability?.type){
+            case LegacyAbilityType.BODY:
+                abilityImage = PokeBody;
+                break;
+            case LegacyAbilityType.POWER:
+                abilityImage = PokePower;
+                break;
+            case LegacyAbilityType.MYTH:
+                abilityImage = PokeMyth;
+                break;
+        }
+
         const abilityInner = (this.pokemon as IPokemonEx).ability!.inner;
 
         const ability = $("<div class='poke-ability card-element'></div>");
         const abilityName = $(`<div class='poke-ability-name'><img src='${abilityImage}'/><p class="${(this.pokemon as IPokemonEx).ability!.type}">${abilityInner.name}</p></div>`);
 
-        const pokemonEx = this.pokemon as IPokemonEx;
         let position = this.slots[0];
         if(pokemonEx.variant != Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.subFlags.isDeltaSpecies || pokemonEx.subFlags.isDark){
             position = this.slots[1];

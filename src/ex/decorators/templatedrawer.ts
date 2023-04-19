@@ -49,6 +49,9 @@ export class TemplateDrawer extends AbstractElementDrawer{
                 case Variant.PRISM:
                     this.cardTemplate.src = this.cardImageLoader.getPrismImageSrc(this.pokemon.type);
                     break;
+                case Variant.MYTHICAL:
+                    this.cardTemplate.src = this.cardImageLoader.getMythicalImageSrc(this.pokemon.type);
+                    break;
                 case Variant.DUAL:
                     this.cardTemplate.src = this.cardImageLoader.getDualImageSrc(this.pokemon.type, pokemonEx.dualType!);
                     break;

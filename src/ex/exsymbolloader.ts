@@ -4,6 +4,8 @@ import ExSymbolImage from "../assets/ex/Variants/ex.png";
 import ExSymbolInvertedImage from "../assets/ex/Variants/ex_invert.png";
 import GoldStarSymbolImage from "../assets/ex/Variants/goldstr.png";
 import PrismSymbolImage from "../assets/ex/Variants/prism.png";
+import MythicalSymbolImage from "../assets/ex/Variants/mythical.png";
+import MythicalSymbolInvertedImage from "../assets/ex/Variants/mythical_invert.png";
 
 export class ExSymbolLoader {
     private static cache: Map<string, HTMLImageElement> = new Map();
@@ -28,6 +30,8 @@ export class ExSymbolLoader {
             case Variant.EX:
             case Variant.EX_SHATTERED:
                 return invert ? ExSymbolInvertedImage : ExSymbolImage;
+            case Variant.MYTHICAL:
+                return invert ? MythicalSymbolInvertedImage : MythicalSymbolImage;
             case Variant.GOLDSTAR:
                 return GoldStarSymbolImage;
             case Variant.PRISM:

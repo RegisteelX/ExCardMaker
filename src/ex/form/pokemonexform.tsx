@@ -234,6 +234,9 @@ export function PokemonExForm() {
             case Variant.PRISM:
                 pokemonBuilder.isPrism();
                 break;
+            case Variant.MYTHICAL:
+                pokemonBuilder.isMythical();
+                break;
             case Variant.GOLDSTAR:
                 pokemonBuilder.isGoldStar();
                 break;

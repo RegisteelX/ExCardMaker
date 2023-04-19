@@ -4,5 +4,6 @@ export enum Variant{
     EX = "EX",
     PRISM = "Prism",
     EX_SHATTERED = "EX_Shattered",
-    GOLDSTAR = "Shining"
+    GOLDSTAR = "Shining",
+    MYTHICAL = "Mythical"
 }
