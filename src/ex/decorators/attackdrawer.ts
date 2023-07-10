@@ -203,8 +203,12 @@ export class AttackDrawer extends AbstractElementDrawer{
         const abilityName = $(`<div class='poke-ability-name'><img src='${abilityImage}'/><p class="${(this.pokemon as IPokemonEx).ability!.type}">${abilityInner.name}</p></div>`);
 
         const pokemonEx = this.pokemon as IPokemonEx;
+        if(IsEvolved(pokemonEx) && pokemonEx.variant === Variant.STANDARD && !pokemonEx.subFlags.isDeltaSpecies && !pokemonEx.subFlags.isDark){
+            abilityName.css("padding-left", "39px");
+        }
+
         let position = this.slots[0];
-        if(pokemonEx.variant != Variant.STANDARD || IsEvolved(pokemonEx) || pokemonEx.subFlags.isDeltaSpecies || pokemonEx.subFlags.isDark){
+        if(pokemonEx.variant != Variant.STANDARD || IsEvolved(pokemonEx) && !this.SLAT_GAP_REDUCED || pokemonEx.subFlags.isDeltaSpecies || pokemonEx.subFlags.isDark){
             position = this.slots[1];
         }
 

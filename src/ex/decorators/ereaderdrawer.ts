@@ -4,8 +4,8 @@ import {IPokemonEx} from "../pokemonex";
 export class EReaderDrawer extends AbstractElementDrawer{
 
     private readonly E_READER_OFFSET: number = 30;
-    private readonly E_READER_OFFSET_DETAILS: number = 37;
-    private readonly E_READER_OFFSET_SERIAL_NUMBER: number = 65;
+    private readonly E_READER_OFFSET_DETAILS: number = 39;
+    private readonly E_READER_OFFSET_SERIAL_NUMBER: number = 63;
     private readonly E_READER_OFFSET_ICON_Y: number = 60;
     private readonly E_READER_OFFSET_ICON_X: number = -10;
     public async drawElement(): Promise<void> {
@@ -35,9 +35,9 @@ export class EReaderDrawer extends AbstractElementDrawer{
             $(".poke-copyright")
                 .increasePosition("bottom", this.E_READER_OFFSET_DETAILS);
             $(".poke-set-detail")
-                .increasePosition("bottom", this.E_READER_OFFSET_DETAILS + 4);
+                .increasePosition("bottom", this.E_READER_OFFSET_DETAILS);
             $(".poke-rarity-wrapper")
-                .increasePosition("bottom", this.E_READER_OFFSET_DETAILS + 4);
+                .increasePosition("bottom", this.E_READER_OFFSET_DETAILS + 2);
 
             $(".poke-icon")
                 .increasePosition("bottom", this.E_READER_OFFSET_ICON_Y)

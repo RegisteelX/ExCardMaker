@@ -7,6 +7,6 @@ export interface IEvolutionStage{
     image: string;
 }
 
-export function IsEvolved(pokemon: IPokemon){
+export function IsEvolved(pokemon: IPokemon) {
     return pokemon.evolution != null && pokemon.evolution.stage != StageType.BASIC;
 }

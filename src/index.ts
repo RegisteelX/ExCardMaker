@@ -15,6 +15,7 @@ import Icon from "./assets/ex/Symbols/promo.png";
 import "./style/bootstrap.scss"
 import "./style/site.scss"
 import "./style/ex_style.scss"
+import {fixAllCssTransformsFor} from "./helpers/fonttransformationfixer";
 
 const pokemon = new PokemonExBuilder("Custom Card")
     .setType(Type.Colorless)
@@ -33,9 +34,9 @@ const pokemon = new PokemonExBuilder("Custom Card")
 
 const chain = new PredefinedElementDrawerChain(pokemon, "card");
 chain.draw();
+fixAllCssTransformsFor("card");
 
 const root = createRoot(document.getElementById('settings-form') as Element);
 root.render(React.createElement(PokemonExForm));
-
-const versionControl = new VersionControl(1, 6, 3);
+const versionControl = new VersionControl(1, 7, 0);
 versionControl.createFooter();
